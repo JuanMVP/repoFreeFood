@@ -10,24 +10,12 @@ import { SignupComponent } from './signup/signup.component';
 export const SessionRoutes: Routes = [
   {
     path: '',
-    children: [{
-      path: '404',
-      component: NotFoundComponent
-    }, {
-      path: 'error',
-      component: ErrorComponent
-    }, {
-      path: 'forgot',
-      component: ForgotComponent
-    }, {
-      path: 'lockscreen',
-      component: LockscreenComponent
-    }, {
-      path: 'signin',
-      component: SigninComponent
-    }, {
-      path: 'signup',
-      component: SignupComponent
-    }]
+    children: [
+      //{ path: '', redirectTo: '/session/login' },
+      {
+        path: '',
+        component: SigninComponent
+      }
+    ]
   }
 ];

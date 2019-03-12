@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.responses.AuthAndRegisterResponse;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText email,password;
     Button btnLogin;
+    TextView textoRegistro;
 
 
     @Override
@@ -42,6 +44,15 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.emailLogin);
         password = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
+        textoRegistro = findViewById(R.id.goRegisterText);
+
+        textoRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
