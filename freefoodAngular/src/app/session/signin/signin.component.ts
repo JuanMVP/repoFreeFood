@@ -9,7 +9,7 @@ import { LoginDto } from 'src/app/dto/LoginDto';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
   user: UserDto;

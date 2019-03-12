@@ -1,0 +1,114 @@
+body {
+    background-image: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/escheresque_ste.png");
+    /* Background pattern from subtlepatterns.com */
+    background-color: #111;
+    color: #fff;
+    padding: 4%;
+ }
+ 
+ .LoginForm md-content {
+    background-color: transparent !important;
+    padding: 5% 10%;
+ }
+ 
+ .LoginForm md-content md-tabs {}
+ 
+ .LoginForm md-content md-tabs md-tabs-wrapper {
+    background: #fff;
+ }
+ 
+ .LoginForm md-content h1:first-child {
+    margin-top: 0;
+ }
+ 
+ md-tabs md-ink-bar {
+    background: #c47135;
+    
+ }
+ 
+ 
+ 
+ #loginDialog {
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.0em;
+    opacity: 0.8;
+    text-transform: none;
+ }
+ 
+ .inputdemoErrors .inputErrorsApp {
+    min-height: 48px;
+ }
+ 
+ .inputdemoErrors md-input-container > p {
+    font-size: 0.8em;
+    text-align: left;
+    width: 100%;
+ }
+ 
+ .logLink {
+    color: #333;
+    cursor: default;
+    font-weight: 600;
+    overflow: hidden;
+    span {
+       cursor: pointer;
+       color: #c47135;
+    }
+ }
+ 
+ .social {
+    
+    margin-top:10%;
+   overflow: hidden;
+    position: relative;
+    text-align: center; 
+    width: 100%;
+    span {
+       display: inline-block;
+       padding: 0 20px;
+       vertical-align: baseline;
+       &:before,
+       &:after {
+          border-top: 1px solid #ccc;
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0.9em;
+          width: 500px;
+       }
+       &:before {
+          right: 75%;
+       }
+       &:after {
+          left: 75%;
+       }
+    }
+ }
+ 
+ .buttons {
+    width: 100%;
+    margin: 20px 0 0;
+    button {
+       float: left;
+       margin: 0px 1.5%;
+       width: 1%;
+       i {
+          padding-right: 7px;
+       }
+       &.facebook {
+          color: #4464B2;
+       }
+       &.twitter {
+          color: #28A9E0;
+       }
+       &.google {
+          color: #DA4735;
+       }
+    } // button
+    &:after {
+       content: "";
+       display: block;
+       clear: both;
+    }
+ } // .buttons
