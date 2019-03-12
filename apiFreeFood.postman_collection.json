@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "87163611-f85c-4607-922d-8ef96feb6318",
+		"name": "apiFreeFood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "juanma@juanma.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "juanma1234",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "juanma",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://free-food-api.herokuapp.com/users?access_token=RL0Pj065laUucm3JOcKTJ5JjOoDCYma2",
+					"protocol": "https",
+					"host": [
+						"free-food-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "RL0Pj065laUucm3JOcKTJ5JjOoDCYma2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUSser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "juanma1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juanma@juanma.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://free-food-api.herokuapp.com/auth?access_token=RL0Pj065laUucm3JOcKTJ5JjOoDCYma2",
+					"protocol": "https",
+					"host": [
+						"free-food-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "RL0Pj065laUucm3JOcKTJ5JjOoDCYma2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
