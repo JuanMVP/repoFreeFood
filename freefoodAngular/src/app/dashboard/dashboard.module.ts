@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delete-recipe.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { DashboardRoutes } from './dashboard.routing';
     MatDialogModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent, DialogDeleteRecipeComponent ]
 })
 
 export class DashboardModule {}

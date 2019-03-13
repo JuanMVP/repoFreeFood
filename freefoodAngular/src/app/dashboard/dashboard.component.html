@@ -1,5 +1,5 @@
 <div fxLayout="row wrap">
-    <div *ngFor="let recetas of arrayRecetas.rows">
+    <div *ngFor="let receta of arrayRecetas.rows">
         <mat-card class="example-card" >
             <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -17,8 +17,8 @@
 
             </mat-card-content>
             <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
+            <button mat-raised-button color="primary" (click)="openDialogDeleteRecipe(element)"><i class="material-icons">delete_forever</i></button>
+            <button mat-raised-button color="primary"><i class="material-icons">edit</i></button>
             </mat-card-actions>
         </mat-card>
     </div>

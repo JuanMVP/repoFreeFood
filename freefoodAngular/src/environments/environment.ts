@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  ApiUrl: 'https://free-food-api.herokuapp.com'
+  ApiUrl: 'https://free-food-api.herokuapp.com',
+  imgUr: 'https://api.imgur.com/3'
 };
 
 /*

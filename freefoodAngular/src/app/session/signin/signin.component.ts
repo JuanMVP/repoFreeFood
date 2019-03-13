@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
       this.router.navigate(['']);
 
     } else {
-      this.router.navigate(['inicio'])
+      this.router.navigate(['home'])
     }
   }
 
