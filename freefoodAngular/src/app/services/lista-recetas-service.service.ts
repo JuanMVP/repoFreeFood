@@ -4,6 +4,7 @@ import { CountRowListResponse } from '../interfaces/CountRowList';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ListaRecetasResponse } from '../interfaces/ListaRecetasResponse.interface';
+import { AddRecipeDto } from '../dto/add-recipe-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,7 @@ export class ListaRecetasServiceService {
     return this.http.get<ListaRecetasResponse[]>(`${environment.ApiUrl}/recipes`, requestOptions);
   }
 
-
-  deleteRecipe(id : string): Observable<any>{
+  addRecipe(addRecipe: AddRecipeDto){
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -31,7 +31,19 @@ export class ListaRecetasServiceService {
         'Access-Control-Allow-Origin': '*'
       })
     };
-    return this.http.delete<any>(`${environment.ApiUrl}/recipes/${id}`, requestOptions);
+    return this.http.post<ListaRecetasResponse>(`${environment.ApiUrl}/recipes`, addRecipe, requestOptions);
+  }
+
+
+  deleteRecipe(id : string){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    return this.http.delete(`${environment.ApiUrl}/recipes/${id}`, requestOptions);
   }
 
 

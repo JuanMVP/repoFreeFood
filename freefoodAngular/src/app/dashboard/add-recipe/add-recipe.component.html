@@ -1,0 +1,32 @@
+<div fxLayout="column" fFlexFill>
+  <h2>Añadir nuevo establecimiento</h2>
+
+  <form [formGroup]="addRecipe" fxLayout="column">
+
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nombre de la Receta" formControlName="name" name="name" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ingredientes" formControlName="ingredients" name="ingredients" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Modo de preparacion" formControlName="description" name="description" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Numero de comensales" formControlName="dinnerGuest" name="dinnerGuest" />
+</mat-form-field>
+
+
+     
+
+
+     
+
+      
+  </form>
+
+  <button mat-raised-button color="primary" (click)="addNewRecipe()">Crear Receta</button>
+</div>

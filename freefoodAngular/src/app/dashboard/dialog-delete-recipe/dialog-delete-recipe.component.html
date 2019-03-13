@@ -1,10 +1,10 @@
-<div class="text-xs-center pb-1" fxLayoutGap="225px">
-    <h3>¿Está seguro que desea borrar el proyecto {{data.nombre}}?</h3>
-  </div>
-  <div fxLayout="column" fxLayoutAlign="space-around">
+<div fxLayout="column" fxFlexFill>
+  <h3>¿Estas Seguro?</h3>  
   
-    <div fxLayout="row" fxLayoutAlign="space-around">
-      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
-      <button mat-raised-button color="primary" (click)="deleteProyecto()">Eliminar</button>
-    </div>
-  </div>
+  <!--<mat-form-field>
+    <input matInput type="text" [(ngModel)]="confirmarBorrar"  placeholder="Escriba 'ELIMINAR'">
+  </mat-form-field>-->
+  
+  <button mat-raised-button color="primary"    (click)="doEliminarRecipe()">Eliminar Receta</button>
+  
+</div>

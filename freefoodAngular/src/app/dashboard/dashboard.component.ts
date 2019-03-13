@@ -5,6 +5,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { ListaRecetasServiceService } from '../services/lista-recetas-service.service';
 import { Router } from '@angular/router';
 import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delete-recipe.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,17 +45,28 @@ export class DashboardComponent implements OnInit {
       });
     }
 
+    openDialogAddNewRecipe(){
+      const dialogNewRecipe = this.dialog.open(AddRecipeComponent);
+    
+    dialogNewRecipe.afterClosed().subscribe(resultado =>{
+      
+      this.getAllRecipes("");
+    })
+    }
 
-    openDialogDeleteRecipe(recipe){
+
+    openDialogDeleteRecipe(recipe: ListaRecetasResponse){
       const dialogDeleteRecipe = this.dialog.open(DialogDeleteRecipeComponent,{
+        height: "40%",
         data: {
-          id: recipe.id,
-          nombre: recipe.name
+          element: recipe
         }
       });
       dialogDeleteRecipe.afterClosed().subscribe(result => {
         this.getAllRecipes('Cargado Correctamente');
-      })
+      }, error =>{
+        console.log(error);
+      });
     }
 
 }

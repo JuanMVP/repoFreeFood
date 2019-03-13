@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatCardModule, MatButtonModule, MatListModule, MatProgressBarModule, MatMenuModule, MatSnackBar, MatDialog, MatSnackBarModule, MatDialogModule } from '@angular/material';
+import { MatIconModule, MatCardModule, MatButtonModule, MatListModule, MatProgressBarModule, MatMenuModule, MatSnackBar, MatDialog, MatSnackBarModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
 import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delete-recipe.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delet
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
     MatListModule,
     MatProgressBarModule,
     MatMenuModule,
@@ -22,7 +28,8 @@ import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delet
     MatDialogModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent, DialogDeleteRecipeComponent ]
+  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent ],
+  entryComponents: [DialogDeleteRecipeComponent,AddRecipeComponent]
 })
 
 export class DashboardModule {}
