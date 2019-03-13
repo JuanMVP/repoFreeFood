@@ -9,6 +9,7 @@ import { DashboardRoutes } from './dashboard.routing';
 import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delete-recipe.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 @NgModule({
   imports: [
@@ -28,8 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent ],
-  entryComponents: [DialogDeleteRecipeComponent,AddRecipeComponent]
+  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent, EditRecipeComponent ],
+  entryComponents: [DialogDeleteRecipeComponent,EditRecipeComponent,AddRecipeComponent]
 })
 
 export class DashboardModule {}

@@ -34,6 +34,17 @@ export class ListaRecetasServiceService {
     return this.http.post<ListaRecetasResponse>(`${environment.ApiUrl}/recipes`, addRecipe, requestOptions);
   }
 
+  editRecipe(id: String, editRecipe: AddRecipeDto){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    return this.http.put<ListaRecetasResponse>(`${environment.ApiUrl}/recipes/${id}`, editRecipe, requestOptions);
+  }
+
 
   deleteRecipe(id : string){
     const requestOptions = {

@@ -6,6 +6,7 @@ import { ListaRecetasServiceService } from '../services/lista-recetas-service.se
 import { Router } from '@angular/router';
 import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delete-recipe.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -49,6 +50,15 @@ export class DashboardComponent implements OnInit {
       const dialogNewRecipe = this.dialog.open(AddRecipeComponent);
     
     dialogNewRecipe.afterClosed().subscribe(resultado =>{
+      
+      this.getAllRecipes("");
+    })
+    }
+
+    openDialogEditNewRecipe(){
+      const dialogEditRecipe = this.dialog.open(EditRecipeComponent);
+    
+    dialogEditRecipe.afterClosed().subscribe(resultado =>{
       
       this.getAllRecipes("");
     })
