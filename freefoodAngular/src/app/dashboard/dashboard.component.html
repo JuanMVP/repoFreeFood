@@ -1,39 +1,25 @@
-<div class="row">
-    <input style="margin-bottom: 4%; margin-left:1%;" type="text" [(ngModel)]="proyectoFilter.nombre" placeholder="Buscar por nombre">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-lg-3 col-md-6" style="height:300px"*ngFor="let proyecto of listaProyectosRes | filterBy: proyectoFilter">
-                <div class="card card-outline-inverse">
-                    <div class="card-header">
-                        <h4 class="m-b-0 text-white contenido" id="proyectoTitulo">{{proyecto.nombre}} - {{proyecto.curso}}</h4>
-                    </div>
-                    <br>
-                    <img class="card-img-top img-responsive" (click)="VerProyecto(proyecto.proyecto)" style="object-fit:scale-down; height:150px" src={{proyecto.imagen}} alt="Card image cap">
-                    <div class="card-body">
-                        <!--
-                        <ngb-rating [readonly]="true" [(rate)]="proyect.valoracionMedia">
-                            <ng-template let-fill="fill">
-                                <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                            </ng-template>
-                        </ngb-rating>
-            
-                        <div class="m-t-10">Valoración Media:
-                            <b>{{proyect.valoracioMedia}}</b>
-                        </div>
-                    -->
-                    <div class="container botones">
-                        <button (click)="openDialogEditProject(proyecto.proyecto)" *ngIf="admin" class="btn btn-warning"><i class="fas fa-pen"></i></button>
-                        <button (click)="openDialogDeleteProject(proyecto)" *ngIf="admin" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-            </div>
-        </div>
+<div fxLayout="row wrap">
+    <div *ngFor="let recetas of arrayRecetas.rows">
+        <mat-card class="example-card" >
+            <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{receta.name}}</mat-card-title>
+            <mat-card-subtitle>{{receta.ingredients}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    {{receta.description}}
+                </p>
+                <p>
+                    {{receta.dinnerguest}}
+                </p>
+
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
-</div>
-<div class="row" *ngIf="admin">
-    <div class="col-11"></div>
-    <button (click)="openDialogAddProject()" type="button" class="btn btn-success btn-circle btn-lg mat-fab-bottom-right" style="z-index: 9;"><i class="fa fa-plus"></i> </button>
 </div>
