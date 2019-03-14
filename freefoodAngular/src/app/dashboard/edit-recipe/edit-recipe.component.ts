@@ -22,11 +22,11 @@ export class EditRecipeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.id
+    this.id = this.data.element.id;
     this.name = this.data.name;
-    this.description = this.data.description;
-    this.ingredients = this.data.ingredients;
-    this.dinnerGuest = this.data.dinnerGuest;
+    this.description = this.data.element.description;
+    this.ingredients = this.data.element.ingredients;
+    this.dinnerGuest = this.data.element.dinnerGuest;
 
     this.editRecipe = new FormGroup({
       name: new FormControl("", [Validators.required]),

@@ -11,35 +11,38 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 export class DialogDeleteRecipeComponent implements OnInit {
  
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private recetaService: ListaRecetasServiceService,
-    public dialogRef: MatDialogRef<DialogDeleteRecipeComponent>, public snackBar: MatSnackBar) { }
-    //name = this.data.element.name;
-    confirmarBorrar: String;
-  ngOnInit() {
+  constructor(
+    public snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<DialogDeleteRecipeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private recipeService: ListaRecetasServiceService
+  ) {}
+
+  //name = this.data.element.name;
+  palabraBorrar: string;
+
+  ngOnInit() {}
+
+  deleteRecipe() {
+    this.recipeService
+      .deleteOneRecipe(this.data.element.id)
+      .subscribe(
+        resp => {
+          this.dialogRef.close();
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
-
-  doEliminarRecipe(){
-    
-    this.recetaService.deleteRecipe(this.data.id).subscribe( deleteResp => {
-      console.log(this.data.id)
-
-      this.closeDialog()
-    
-    });
-  }
-
-
-  validarDelete():boolean{
+  validarDelete(): boolean {
     let validar = true;
-    if(this.confirmarBorrar != 'ELIMINAR'){
+
+    if (this.palabraBorrar != "ELIMINAR") {
       validar = false;
     }
     return validar;
-  }
-
-  closeDialog(){
-    this.dialogRef.close();
   }
 
 

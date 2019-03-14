@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatCardModule, MatButtonModule, MatListModule, MatProgressBarModule, MatMenuModule, MatSnackBar, MatDialog, MatSnackBarModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatIconModule, MatCardModule, MatButtonModule, MatListModule, MatProgressBarModule, MatMenuModule, MatSnackBar, MatDialog, MatSnackBarModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DashboardComponent } from './dashboard.component';
@@ -10,6 +10,9 @@ import { DialogDeleteRecipeComponent } from './dialog-delete-recipe/dialog-delet
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { ListaRecetasServiceService } from '../services/lista-recetas-service.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @NgModule({
   imports: [
@@ -27,10 +30,15 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     MatMenuModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent, EditRecipeComponent ],
-  entryComponents: [DialogDeleteRecipeComponent,EditRecipeComponent,AddRecipeComponent]
+  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent, EditRecipeComponent, UserListComponent ],
+  providers: [
+    ListaRecetasServiceService,UsuarioService
+  ],
+  entryComponents: [DialogDeleteRecipeComponent,EditRecipeComponent,AddRecipeComponent, UserListComponent]
 })
 
 export class DashboardModule {}

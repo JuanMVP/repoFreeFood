@@ -55,8 +55,13 @@ export class DashboardComponent implements OnInit {
     })
     }
 
-    openDialogEditNewRecipe(){
-      const dialogEditRecipe = this.dialog.open(EditRecipeComponent);
+    openDialogEditNewRecipe(recipe: ListaRecetasResponse){
+      const dialogEditRecipe = this.dialog.open(EditRecipeComponent,{
+        height: "40%",
+        data: {
+          element: recipe
+        }
+      });
     
     dialogEditRecipe.afterClosed().subscribe(resultado =>{
       

@@ -1,7 +1,7 @@
 <div fxLayout="row wrap">
         <button mat-raised-button color="primary" (click)="openDialogAddNewRecipe()">Agregar Recurso<mat-icon>add</mat-icon></button>
               <br/>
-    <div *ngFor="let receta of arrayRecetas.rows">
+    <div  *ngFor="let receta of arrayRecetas.rows">
         <mat-card class="example-card" >
             <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -19,8 +19,8 @@
 
             </mat-card-content>
             <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="openDialogDeleteRecipe(recipe)"><i class="material-icons">delete_forever</i></button>
-            <button mat-raised-button color="primary" (click)="openDialogEditNewRecipe()"><i class="material-icons">edit</i></button>
+            <button mat-raised-button color="primary" (click)="openDialogDeleteRecipe(receta)"><i class="material-icons">delete_forever</i></button>
+            <button mat-raised-button color="primary" (click)="openDialogEditNewRecipe(receta)"><i class="material-icons">edit</i></button>
             </mat-card-actions>
         </mat-card>
     </div>

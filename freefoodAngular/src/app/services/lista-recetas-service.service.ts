@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { ListaRecetasResponse } from '../interfaces/ListaRecetasResponse.interface';
 import { AddRecipeDto } from '../dto/add-recipe-dto';
 
+const recipesUrl = `${environment.ApiUrl}/recipes`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,11 +44,11 @@ export class ListaRecetasServiceService {
         'Access-Control-Allow-Origin': '*'
       })
     };
-    return this.http.put<ListaRecetasResponse>(`${environment.ApiUrl}/recipes/${id}`, editRecipe, requestOptions);
+    return this.http.put<ListaRecetasResponse>(`${recipesUrl}/${id}`, editRecipe, requestOptions);
   }
 
 
-  deleteRecipe(id : string){
+  /*deleteRecipe(id : string){
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -55,6 +57,17 @@ export class ListaRecetasServiceService {
       })
     };
     return this.http.delete(`${environment.ApiUrl}/recipes/${id}`, requestOptions);
+  }*/
+
+  deleteOneRecipe(id: string) {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    return this.http.delete(`${recipesUrl}/${id}`, requestOptions);
   }
 
 

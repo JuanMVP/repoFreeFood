@@ -28,8 +28,8 @@ const MENUITEMS = [
     icon: 'explore'
   },
   {
-    state: 'http://primer.nyasha.me/docs',
-    name: 'DOCS',
+    state: 'users',
+    name: 'Usuarios',
     type: 'extTabLink',
     icon: 'local_library'
   }
