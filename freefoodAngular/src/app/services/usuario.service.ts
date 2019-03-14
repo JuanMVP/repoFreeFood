@@ -4,6 +4,7 @@ import { LoginServiceService } from './login-service.service';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CountRowListResponse } from '../interfaces/CountRowList';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient, private loginService: LoginServiceService) { }
 
-  getAllUsers(): Observable<Usuario[]>{
+  getAllUsers(): Observable<CountRowListResponse>{
     const requestOptions = {
       headers: new HttpHeaders ({
         'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export class UsuarioService {
       })
     };
 
-    return this.http.get<Usuario[]>(`${environment.ApiUrl}/users`, requestOptions)
+    return this.http.get<CountRowListResponse>(`${environment.ApiUrl}/users`, requestOptions)
 
   }
 

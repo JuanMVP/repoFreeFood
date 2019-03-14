@@ -22,13 +22,13 @@ export interface Menu {
 
 const MENUITEMS = [
   {
-    state: '/',
+    state: 'home',
     name: 'HOME',
     type: 'link',
     icon: 'explore'
   },
   {
-    state: 'users',
+    state: 'usuarios',
     name: 'Usuarios',
     type: 'extTabLink',
     icon: 'local_library'

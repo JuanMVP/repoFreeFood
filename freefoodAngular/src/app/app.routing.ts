@@ -12,7 +12,7 @@ export const AppRoutes: Routes = [
     }]
   },
   {
-    path: 'home',
+    path: '',
     component: AdminLayoutComponent,
     children: [{
       path: '',
