@@ -23,7 +23,7 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.data.element.id;
-    this.name = this.data.name;
+    this.name = this.data.element.name;
     this.description = this.data.element.description;
     this.ingredients = this.data.element.ingredients;
     this.dinnerGuest = this.data.element.dinnerGuest;

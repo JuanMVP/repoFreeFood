@@ -3,8 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginServiceService } from './login-service.service';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { CountRowListResponse } from '../interfaces/CountRowList';
+import { AddUserDto } from '../dto/add-user-dto';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient, private loginService: LoginServiceService) { }
 
-  getAllUsers(): Observable<CountRowListResponse>{
+  getAllUsers(): Observable<Usuario[]>{
     const requestOptions = {
       headers: new HttpHeaders ({
         'Content-Type': 'application/json',
@@ -22,8 +24,32 @@ export class UsuarioService {
       })
     };
 
-    return this.http.get<CountRowListResponse>(`${environment.ApiUrl}/users`, requestOptions)
+    return this.http.get<Usuario[]>(`${environment.ApiUrl}/users`, requestOptions)
 
   }
+
+  editUser(id: String, editUser: AddUserDto){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*'
+      })
+  };
+  return this.http.put<Usuario>(`${environment.ApiUrl}/users/${id}`,editUser,requestOptions)
+}
+
+
+  deleteOneUser(id: string){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    return this.http.delete(`${environment.ApiUrl}/users/${id}`, requestOptions);
+  }
+
 
 }

@@ -1,0 +1,18 @@
+<div fxLayout="column" fFlexFill>
+  <h2>Editar Receta</h2>
+
+  <form *ngIf="editUser" [formGroup]="editUser" fxLayout="column">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nombre de Usuario" formControlName="name" name="name" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email" name="email" />
+    </mat-form-field>
+
+    
+  </form>
+
+  <button mat-raised-button color="primary" (click)="editOneUser()">Crear Receta</button>
+</div>

@@ -4,8 +4,10 @@ import { MatSnackBar, MatDialog, MatTableDataSource, MatPaginator } from '@angul
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { ListaRecetasResponse } from 'src/app/interfaces/ListaRecetasResponse.interface';
 import { CountRowListResponse } from 'src/app/interfaces/CountRowList';
+import { DialogUserDeleteComponent } from '../dialog-user-delete/dialog-user-delete.component';
+import { DialogEditUsuarioComponent } from '../dialog-edit-usuario/dialog-edit-usuario.component';
 
-//const ELEMENT_DATA: Usuario[] = [];
+const ELEMENT_DATA: Usuario[] = [];
 
 @Component({
   selector: 'app-user-list',
@@ -13,12 +15,12 @@ import { CountRowListResponse } from 'src/app/interfaces/CountRowList';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  displayedColumns: string[] = ['id','name', 'email', 'acciones'];  
+  displayedColumns: string[] = ['id','name', 'email', 'role', 'acciones'];  
   //dataSource: UsuarioInterface[];
   //dataSource = new MatTableDataSource(ELEMENT_DATA);
   dataSource;
   usuarioList: Usuario[];
-  usuario: CountRowListResponse;
+  usuario: Usuario;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private usuarioService: UsuarioService, public snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -30,8 +32,8 @@ export class UserListComponent implements OnInit {
 
   getListaUsuarios(mensaje:string){
     this.usuarioService.getAllUsers().subscribe(listaUsuarios => {
-      //this.dataSource.data = listaUsuarios['rows'];
-      this.dataSource = new MatTableDataSource(listaUsuarios.rows);
+      this.dataSource = listaUsuarios['rows'];
+      //this.dataSource = new MatTableDataSource(listaUsuarios);
       this.dataSource.paginator = this.paginator;
 
       this.snackBar.open(mensaje, 'X',{
@@ -44,6 +46,35 @@ export class UserListComponent implements OnInit {
         duration:1000
       });
     });
+  }
+
+  openDialogDeleteUser(user: Usuario){
+    const dialogNewRecipe = this.dialog.open(DialogUserDeleteComponent,{
+      height: "40%",
+      data:{
+        element: user
+      }
+    });
+    
+    dialogNewRecipe.afterClosed().subscribe(resultado =>{
+      
+      this.getListaUsuarios("");
+    })
+  }
+
+
+  openDialogEditUser(user: Usuario){
+    const dialogEditRecipe = this.dialog.open(DialogEditUsuarioComponent,{
+      height: "40%",
+      data: {
+        element: user
+      }
+    });
+  
+  dialogEditRecipe.afterClosed().subscribe(resultado =>{
+    
+    this.getListaUsuarios("");
+  })
   }
 
 
