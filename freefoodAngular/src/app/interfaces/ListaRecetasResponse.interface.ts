@@ -4,5 +4,5 @@ export interface ListaRecetasResponse{
     description: String;
     ingredients: String;
     dinnerGuest: Number;
-    photoRecipes: String[];
+    picture: String;
 }

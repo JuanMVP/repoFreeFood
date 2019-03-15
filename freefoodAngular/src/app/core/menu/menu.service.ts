@@ -25,13 +25,19 @@ const MENUITEMS = [
     state: 'home',
     name: 'HOME',
     type: 'link',
-    icon: 'explore'
+    icon: 'home'
   },
   {
     state: 'usuarios',
     name: 'Usuarios',
     type: 'extTabLink',
-    icon: 'local_library'
+    icon: 'person'
+  },
+  {
+    state: '/session/signin',
+    name: 'Logout',
+    type: 'link',
+    icon: 'power_settings_new'
   }
 ];
 

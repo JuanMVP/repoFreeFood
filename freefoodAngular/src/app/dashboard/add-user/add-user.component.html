@@ -7,18 +7,22 @@
     <input matInput placeholder="Nombre" formControlName="name">
   </mat-form-field>
   
-
+  <br/>
   
   <mat-form-field class="example-full-width">
-   <input matInput placeholder="Email" formControlName="email">
-   </mat-form-field>
+  <input matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
  
-
+   <br/>
   
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Contraseña"  [type]="hide ? 'password' : 'text'" formControlName="password">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
+
+    <br/>
+
+    
 
     
 <button mat-raised-button color="primary" (click)="addNewUser()"  >Crear</button>
