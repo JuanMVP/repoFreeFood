@@ -1,5 +1,5 @@
-<div fxLayout="row wrap">
-        <button mat-raised-button color="primary" (click)="openDialogAddNewRecipe()">Agregar Recurso<mat-icon>add</mat-icon></button>
+<div fxFlex="100%" fxFlexFill fxLayout="row wrap">
+        <button mat-raised-button color="primary"  class="add-button" (click)="openDialogAddNewRecipe()">Agregar Recurso<mat-icon>add</mat-icon></button>
               <br/>
     <div  *ngFor="let receta of arrayRecetas.rows">
         <mat-card class="example-card" >

@@ -6,6 +6,7 @@ import { ListaRecetasResponse } from 'src/app/interfaces/ListaRecetasResponse.in
 import { CountRowListResponse } from 'src/app/interfaces/CountRowList';
 import { DialogUserDeleteComponent } from '../dialog-user-delete/dialog-user-delete.component';
 import { DialogEditUsuarioComponent } from '../dialog-edit-usuario/dialog-edit-usuario.component';
+import { AddUserComponent } from '../add-user/add-user.component';
 
 const ELEMENT_DATA: Usuario[] = [];
 
@@ -46,6 +47,15 @@ export class UserListComponent implements OnInit {
         duration:1000
       });
     });
+  }
+
+  openDialogAddUser(){
+    const dialogNewRecipe = this.dialog.open(AddUserComponent);
+    
+    dialogNewRecipe.afterClosed().subscribe(resultado =>{
+      
+      this.getListaUsuarios("");
+    })
   }
 
   openDialogDeleteUser(user: Usuario){

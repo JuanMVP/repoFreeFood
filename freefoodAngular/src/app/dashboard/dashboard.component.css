@@ -1,3 +1,6 @@
+.add-button{
+  height: 50px;
+}
 .example-card {
     z-index: 200px;
     max-width: 290px;

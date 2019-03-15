@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   ApiUrl: 'https://free-food-api.herokuapp.com',
-  imgUr: 'https://api.imgur.com/3'
+  imgUr: 'https://api.imgur.com/3',
+  masterKey: 'RL0Pj065laUucm3JOcKTJ5JjOoDCYma2'
 };
 
 /*

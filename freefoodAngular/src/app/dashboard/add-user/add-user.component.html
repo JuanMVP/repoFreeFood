@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <h2>Añadir Usuario </h2>
+</div>
+<div fxLayout="column"  fxLayoutAlign="center center">
+<form [formGroup]="addUser" >
+    <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombre" formControlName="name">
+  </mat-form-field>
+  
+
+  
+  <mat-form-field class="example-full-width">
+   <input matInput placeholder="Email" formControlName="email">
+   </mat-form-field>
+ 
+
+  
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Contraseña"  [type]="hide ? 'password' : 'text'" formControlName="password">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+
+    
+<button mat-raised-button color="primary" (click)="addNewUser()"  >Crear</button>
+</form>
+</div>
+

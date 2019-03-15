@@ -15,6 +15,7 @@ import { ListaRecetasServiceService } from '../services/lista-recetas-service.se
 import { UsuarioService } from '../services/usuario.service';
 import { DialogUserDeleteComponent } from './dialog-user-delete/dialog-user-delete.component';
 import { DialogEditUsuarioComponent } from './dialog-edit-usuario/dialog-edit-usuario.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -36,11 +37,11 @@ import { DialogEditUsuarioComponent } from './dialog-edit-usuario/dialog-edit-us
     MatPaginatorModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent, EditRecipeComponent, UserListComponent, DialogUserDeleteComponent, DialogEditUsuarioComponent ],
+  declarations: [ DashboardComponent, DialogDeleteRecipeComponent, AddRecipeComponent, EditRecipeComponent, UserListComponent, DialogUserDeleteComponent, DialogEditUsuarioComponent, AddUserComponent ],
   providers: [
     ListaRecetasServiceService,UsuarioService
   ],
-  entryComponents: [DialogDeleteRecipeComponent,EditRecipeComponent,AddRecipeComponent, UserListComponent,DialogUserDeleteComponent,DialogEditUsuarioComponent]
+  entryComponents: [DialogDeleteRecipeComponent,EditRecipeComponent,AddRecipeComponent, UserListComponent,DialogUserDeleteComponent,DialogEditUsuarioComponent,AddUserComponent]
 })
 
 export class DashboardModule {}

@@ -13,17 +13,21 @@ export class DialogEditUsuarioComponent implements OnInit {
   editUser: FormGroup;
   id: String;
   name: String;
-  email: String
+  email: String;
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   constructor( private userService: UsuarioService,@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<DialogEditUsuarioComponent>,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.id = this.data.element.id;
     this.name = this.data.element.name;
     this.email = this.data.element.email;
+    this.passwordControl = this.data.element.password;
+
 
     this.editUser = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required]),
+      password: this.passwordControl,
     });
   }
 

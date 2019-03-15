@@ -1,11 +1,15 @@
 export class AddUserDto{
-    name: String;
     email: String;
+    name: String;
+    password: String;
+    
     
 
-    constructor(name: String, email: String){
+    constructor(email: String, name: String, password: String){
         this.name = name;
         this.email = email;
+        this.password = password;
+
         
     }
 }

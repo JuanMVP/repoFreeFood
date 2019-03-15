@@ -28,6 +28,16 @@ export class UsuarioService {
 
   }
 
+  addUser(addUser: AddUserDto){
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        
+      })
+    };
+    return this.http.post<Usuario>(`${environment.ApiUrl}/users?access_token=${environment.masterKey}`,addUser, requestOptions)
+  }
+
   editUser(id: String, editUser: AddUserDto){
     const requestOptions = {
       headers: new HttpHeaders({
