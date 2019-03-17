@@ -71,7 +71,7 @@ public class RestaurantesFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyRestaurantesRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
         }
         return view;
     }

@@ -15,9 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.freefoodapp.R;
+import com.example.freefoodapp.fragments.RestaurantesFragment;
+import com.example.freefoodapp.fragments.dummy.DummyContent;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RestaurantesFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //color para iconos
+        navigationView.setItemIconTintList(null);
+
     }
 
     @Override
@@ -83,9 +88,10 @@ public class DashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_login) {
             startActivity(new Intent(DashboardActivity.this,LoginActivity.class));
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_restaurant) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -100,5 +106,10 @@ public class DashboardActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+        
     }
 }

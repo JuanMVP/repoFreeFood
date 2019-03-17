@@ -1,14 +1,19 @@
 package com.example.freefoodapp.fragments;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
+import com.example.freefoodapp.models.Restaurant;
+import com.example.freefoodapp.responses.RestaurantResponse;
 
 import java.util.List;
 
@@ -19,12 +24,14 @@ import java.util.List;
  */
 public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRestaurantesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<RestaurantResponse> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private Context ctx;
 
-    public MyRestaurantesRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyRestaurantesRecyclerViewAdapter(Context ctx, int layout,List<RestaurantResponse> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
+        this.ctx = ctx;
     }
 
     @Override
@@ -37,19 +44,17 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.nombreRestaurante.setText(holder.mItem.getName());
+        holder.direccionRestaurante.setText(holder.mItem.getName());
+        holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance());
+        holder.horarioRestaurante.setText(holder.mItem.getTimeTable());
+        if(holder.mItem.getPhoto() == null){
+            Glide.with(ctx).load(holder.mItem.getPhoto()).into(holder.imagenRestauranteLista);
+        }else{
+            Glide.with(ctx).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(holder.imagenRestauranteLista);
+        }
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+
     }
 
     @Override
@@ -59,20 +64,23 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+
+        public RestaurantResponse mItem;
+        public ImageView imagenRestauranteLista, imgLocationRestaurante, imgFavRestaurante;
+        public TextView nombreRestaurante,direccionRestaurante,intoleranciasRestaurante,horarioRestaurante;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            imagenRestauranteLista =  view.findViewById(R.id.restauranteImagenList);
+            imgLocationRestaurante =  view.findViewById(R.id.RestauranteListLocation);
+            imgFavRestaurante = view.findViewById(R.id.restauranteListFav);
+            nombreRestaurante = view.findViewById(R.id.nombreRestauranteList);
+            direccionRestaurante= view.findViewById(R.id.direccionRestauranteList);
+            intoleranciasRestaurante = view.findViewById(R.id.intoleranciasRestauranteList);
+            horarioRestaurante = view.findViewById(R.id.horarioRestauranteList);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
+
     }
 }
