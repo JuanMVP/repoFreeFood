@@ -1,4 +1,4 @@
-package com.example.freefoodapp.fragments;
+package com.example.freefoodapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
-import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
 
 import java.util.List;

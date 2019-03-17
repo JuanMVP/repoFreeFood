@@ -110,6 +110,6 @@ public class DashboardActivity extends AppCompatActivity
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
-        
+
     }
 }
