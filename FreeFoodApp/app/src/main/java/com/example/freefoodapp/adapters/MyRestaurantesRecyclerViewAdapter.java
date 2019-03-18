@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
+import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
 
 import java.util.List;
@@ -23,11 +24,11 @@ import java.util.List;
  */
 public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRestaurantesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<RestaurantResponse> mValues;
+    private final List<Restaurant> mValues;
     private final OnListFragmentInteractionListener mListener;
     private Context ctx;
 
-    public MyRestaurantesRecyclerViewAdapter(Context ctx, int layout,List<RestaurantResponse> items, OnListFragmentInteractionListener listener) {
+    public MyRestaurantesRecyclerViewAdapter(Context ctx, int layout, List<Restaurant> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
         this.ctx = ctx;
@@ -44,11 +45,13 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.nombreRestaurante.setText(holder.mItem.getName());
-        holder.direccionRestaurante.setText(holder.mItem.getName());
-        holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance());
-        holder.horarioRestaurante.setText(holder.mItem.getTimeTable());
-        if(holder.mItem.getPhoto() == null){
-            Glide.with(ctx).load(holder.mItem.getPhoto()).into(holder.imagenRestauranteLista);
+        holder.direccionRestaurante.setText(holder.mItem.getAddress());
+        if(holder.mItem.getIntolerance() != null) {
+            holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().getName());
+        }
+        holder.horarioRestaurante.setText(holder.mItem.getTimetable());
+        if(holder.mItem.getListPhotos() != null){
+            Glide.with(ctx).load(holder.mItem.getListPhotos().get(0)).into(holder.imagenRestauranteLista);
         }else{
             Glide.with(ctx).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(holder.imagenRestauranteLista);
         }
@@ -64,7 +67,7 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
 
-        public RestaurantResponse mItem;
+        public Restaurant mItem;
         public ImageView imagenRestauranteLista, imgLocationRestaurante, imgFavRestaurante;
         public TextView nombreRestaurante,direccionRestaurante,intoleranciasRestaurante,horarioRestaurante;
 

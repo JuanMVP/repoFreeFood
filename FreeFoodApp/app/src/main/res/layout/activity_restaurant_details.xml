@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/design_default_color_primary"
-                android:fontFamily="@font/montserrat"
                 android:padding="5dp"
                 android:text="Obra nueva"
                 android:textColor="@android:color/white"
@@ -41,12 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="Piso en Matalascañas"
+            android:text="Nombre Restaurante"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -67,17 +63,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view3"
-            app:srcCompat="@drawable/ic_cama" />
-
-        <TextView
-            android:id="@+id/prop_details_rooms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:text="3"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:srcCompat="@drawable/ic_horario" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -85,40 +71,27 @@
             android:layout_height="20dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/timetableDetailRestaurant"
             app:layout_constraintTop_toBottomOf="@+id/view3"
-            app:srcCompat="@drawable/ic_dimension" />
+            app:srcCompat="@drawable/ic_gluten_free" />
 
         <TextView
-            android:id="@+id/prop_details_size"
+            android:id="@+id/intoleranciasDetailsRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
-            android:text="20"
+            android:text="Intolerancias"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         <TextView
-            android:id="@+id/property_fav_metros"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="16dp"
-            android:text="m²"
-            app:layout_constraintStart_toEndOf="@+id/prop_details_size"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-        <TextView
-            android:id="@+id/prop_detail_address"
+            android:id="@+id/direccionRestaurante"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="Calle Fedra, 41009, Sevilla"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:text="direccion Restaurante"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombreRestaurante" />
 
@@ -128,7 +101,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/prop_detail_address"
+            app:layout_constraintTop_toBottomOf="@+id/direccionRestaurante"
             tools:layout_editor_absoluteX="0dp" />
 
         <View
@@ -176,36 +149,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="289dp" />
-
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/timetableDetailRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
-            android:text="habs"
-            app:layout_constraintStart_toEndOf="@+id/prop_details_rooms"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="402dp" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="373dp" />
+            android:text="horario - telefono"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:layout_editor_absoluteX="53dp" />
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"

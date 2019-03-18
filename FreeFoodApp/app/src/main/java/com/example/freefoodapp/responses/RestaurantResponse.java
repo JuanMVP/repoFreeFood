@@ -1,27 +1,30 @@
 package com.example.freefoodapp.responses;
 
+import com.example.freefoodapp.models.Intolerance;
+
+import java.util.List;
+
 public class RestaurantResponse {
 
     private String id;
     private String name;
     private String address;
-    private String intolerance;
+    private Intolerance intoleranceId;
     private String timeTable;
     private String loc;
-    private String photo;
+    private List<String> listaFotos;
 
     public RestaurantResponse(){}
 
-    public RestaurantResponse(String id, String name, String address, String intolerance, String timeTable, String loc, String photo) {
+    public RestaurantResponse(String id, String name, String address, Intolerance intoleranceId, String timeTable, String loc, List<String> listaFotos) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.intolerance = intolerance;
+        this.intoleranceId = intoleranceId;
         this.timeTable = timeTable;
         this.loc = loc;
-        this.photo = photo;
+        this.listaFotos = listaFotos;
     }
-
 
     public String getId() {
         return id;
@@ -47,12 +50,12 @@ public class RestaurantResponse {
         this.address = address;
     }
 
-    public String getIntolerance() {
-        return intolerance;
+    public Intolerance getIntoleranceId() {
+        return intoleranceId;
     }
 
-    public void setIntolerance(String intolerance) {
-        this.intolerance = intolerance;
+    public void setIntoleranceId(Intolerance intoleranceId) {
+        this.intoleranceId = intoleranceId;
     }
 
     public String getTimeTable() {
@@ -71,12 +74,12 @@ public class RestaurantResponse {
         this.loc = loc;
     }
 
-    public String getPhoto() {
-        return photo;
+    public List<String> getListaFotos() {
+        return listaFotos;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setListaFotos(List<String> listaFotos) {
+        this.listaFotos = listaFotos;
     }
 
 
@@ -86,10 +89,10 @@ public class RestaurantResponse {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", intolerance='" + intolerance + '\'' +
+                ", intoleranceId=" + intoleranceId +
                 ", timeTable='" + timeTable + '\'' +
                 ", loc='" + loc + '\'' +
-                ", photo='" + photo + '\'' +
+                ", listaFotos=" + listaFotos +
                 '}';
     }
 }

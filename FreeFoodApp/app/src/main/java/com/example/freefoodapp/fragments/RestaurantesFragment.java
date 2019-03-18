@@ -17,6 +17,7 @@ import com.example.freefoodapp.R;
 import com.example.freefoodapp.adapters.MyRestaurantesRecyclerViewAdapter;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
 import com.example.freefoodapp.models.ResponseContainer;
+import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RestaurantService;
@@ -44,7 +45,7 @@ public class RestaurantesFragment extends Fragment {
     private MyRestaurantesRecyclerViewAdapter adapter;
     private Context ctx;
     private RecyclerView recyclerView;
-    private List<RestaurantResponse> listaRestaurantes;
+    private List<Restaurant> listaRestaurantes;
 
 
     public RestaurantesFragment() {
@@ -92,11 +93,11 @@ public class RestaurantesFragment extends Fragment {
             listaRestaurantes = new ArrayList<>();
 
             final RestaurantService restaurantService = ServiceGenerator.createService(RestaurantService.class);
-            Call<ResponseContainer<RestaurantResponse>> callRestaurant = restaurantService.getRestaurants();
+            Call<ResponseContainer<Restaurant>> callRestaurant = restaurantService.getRestaurants();
 
-            callRestaurant.enqueue(new Callback<ResponseContainer<RestaurantResponse>>() {
+            callRestaurant.enqueue(new Callback<ResponseContainer<Restaurant>>() {
                 @Override
-                public void onResponse(Call<ResponseContainer<RestaurantResponse>> call, Response<ResponseContainer<RestaurantResponse>> response) {
+                public void onResponse(Call<ResponseContainer<Restaurant>> call, Response<ResponseContainer<Restaurant>> response) {
                     if(response.isSuccessful()){
                         listaRestaurantes = response.body().getRows();
                         adapter = new MyRestaurantesRecyclerViewAdapter(ctx,
@@ -108,7 +109,7 @@ public class RestaurantesFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseContainer<RestaurantResponse>> call, Throwable t) {
+                public void onFailure(Call<ResponseContainer<Restaurant>> call, Throwable t) {
                     Log.e("NetworkFailure", t.getMessage());
                     Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
                 }
@@ -122,6 +123,7 @@ public class RestaurantesFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.ctx = context;
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {

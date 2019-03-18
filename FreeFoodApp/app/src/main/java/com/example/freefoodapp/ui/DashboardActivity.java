@@ -48,6 +48,8 @@ public class DashboardActivity extends AppCompatActivity
         //color para iconos
         navigationView.setItemIconTintList(null);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
+
     }
 
     @Override
