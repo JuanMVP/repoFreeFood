@@ -7,23 +7,22 @@ public class Restaurant {
     private String id;
     private String name;
     private String address;
-    private Intolerance intolerance;
+    private List<Intolerance> intolerance;
     private String timetable;
     private String loc;
-    private List<String> listPhotos;
+    private Picture picture;
 
     public Restaurant(){}
 
-    public Restaurant(String id, String name, String address, Intolerance intolerance, String timetable, String loc, List<String> listPhotos) {
+    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String loc, Picture picture) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.intolerance = intolerance;
         this.timetable = timetable;
         this.loc = loc;
-        this.listPhotos = listPhotos;
+        this.picture = picture;
     }
-
 
     public String getId() {
         return id;
@@ -49,11 +48,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Intolerance getIntolerance() {
+    public List<Intolerance> getIntolerance() {
         return intolerance;
     }
 
-    public void setIntolerance(Intolerance intolerance) {
+    public void setIntolerance(List<Intolerance> intolerance) {
         this.intolerance = intolerance;
     }
 
@@ -73,14 +72,13 @@ public class Restaurant {
         this.loc = loc;
     }
 
-    public List<String> getListPhotos() {
-        return listPhotos;
+    public Picture getPicture() {
+        return picture;
     }
 
-    public void setListPhotos(List<String> listPhotos) {
-        this.listPhotos = listPhotos;
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
-
 
     @Override
     public String toString() {
@@ -91,7 +89,7 @@ public class Restaurant {
                 ", intolerance=" + intolerance +
                 ", timetable='" + timetable + '\'' +
                 ", loc='" + loc + '\'' +
-                ", listPhotos=" + listPhotos +
+                ", picture=" + picture +
                 '}';
     }
 }

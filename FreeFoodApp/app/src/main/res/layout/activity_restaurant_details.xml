@@ -11,28 +11,16 @@
         android:layout_height="wrap_content"
         tools:context=".ui.PropertyDetailActivity">
 
-        <com.smarteist.autoimageslider.SliderLayout
-            android:id="@+id/imageSlider"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_alignParentTop="true"
-            android:layout_margin="10dp"
+
+        <ImageView
+            android:id="@+id/imagenDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="188dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/prop_category_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/design_default_color_primary"
-                android:padding="5dp"
-                android:text="Obra nueva"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </com.smarteist.autoimageslider.SliderLayout>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/restaurante" />
 
         <TextView
             android:id="@+id/nombreRestaurante"
@@ -40,9 +28,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="Nombre Restaurante"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -77,11 +68,14 @@
 
         <TextView
             android:id="@+id/intoleranciasDetailsRestaurant"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="Intolerancias"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -91,7 +85,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="direccion Restaurante"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombreRestaurante" />
 
@@ -151,7 +148,7 @@
 
         <TextView
             android:id="@+id/timetableDetailRestaurant"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="horario - telefono"

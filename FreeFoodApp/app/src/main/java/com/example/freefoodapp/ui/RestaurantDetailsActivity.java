@@ -2,6 +2,7 @@ package com.example.freefoodapp.ui;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
+import com.example.freefoodapp.adapters.PhotoAdapter;
 import com.example.freefoodapp.models.OneResponseContainer;
 import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
@@ -33,8 +36,9 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
     private String token;
     private TextView nombreRestaurante,direccionRestaurante,horarioRestaurante,intoleranciasRestaurantes;
     private MapView mapView;
-    private SliderLayout sliderLayout;
-    private RestaurantResponse restaurante;
+    private ViewPager fotosPage;
+    private Restaurant restaurante;
+    private ImageView imagenDetalle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,41 +54,32 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
         direccionRestaurante = findViewById(R.id.direccionRestaurante);
         horarioRestaurante = findViewById(R.id.timetableDetailRestaurant);
         intoleranciasRestaurantes = findViewById(R.id.intoleranciasDetailsRestaurant);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync( this);
+        imagenDetalle = findViewById(R.id.imagenDetalle);
+        /*mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync( this);*/
 
-        final DefaultSliderView sliderView = new DefaultSliderView(RestaurantDetailsActivity.this);
 
-        RestaurantService restaurantService = ServiceGenerator.createService(RestaurantService.class);
-        Call<OneResponseContainer<RestaurantResponse>> callOneRestaurant = restaurantService.getOneRestaurant(idRestaurante);
-        callOneRestaurant.enqueue(new Callback<OneResponseContainer<RestaurantResponse>>() {
+
+
+        final RestaurantService restaurantService = ServiceGenerator.createService(RestaurantService.class);
+        Call<OneResponseContainer<Restaurant>> callOneRestaurant = restaurantService.getOneRestaurant(idRestaurante);
+        callOneRestaurant.enqueue(new Callback<OneResponseContainer<Restaurant>>() {
             @Override
-            public void onResponse(Call<OneResponseContainer<RestaurantResponse>> call, Response<OneResponseContainer<RestaurantResponse>> response) {
+            public void onResponse(Call<OneResponseContainer<Restaurant>> call, Response<OneResponseContainer<Restaurant>> response) {
                 if(response.isSuccessful()){
 
                     restaurante = response.body().getRows();
-                    if(response.body().getRows().getListaFotos().size() == 0){
-                        for (int i = 0; i<4; i++) {
-                            sliderView.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoeXvLyc0OuLboMyi0lgP_nA-LsvTDCI4_F-OeICotZOloNNFO");
-                            sliderLayout.addSliderView(sliderView);
-
-                        }
+                    if(restaurante.getPicture().getImgurLink() != null){
+                        Glide.with(RestaurantDetailsActivity.this).load(restaurante.getPicture().getImgurLink()).into(imagenDetalle);
                     }else{
-                        List<String> listaFotos = new ArrayList<>(response.body().getRows().getListaFotos());
-                        for (int i = 0; i < listaFotos.size(); i++){
-
-                            String urlFotos = response.body().getRows().getListaFotos().get(i);
-                            sliderView.setImageUrl(urlFotos);
-                            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-                            sliderLayout.addSliderView(sliderView);
-                        }
+                        Glide.with(RestaurantDetailsActivity.this).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(imagenDetalle);
                     }
 
 
                     nombreRestaurante.setText(restaurante.getName());
                     direccionRestaurante.setText(restaurante.getAddress());
-                    intoleranciasRestaurantes.setText(restaurante.getIntoleranceId().getName());
-                    horarioRestaurante.setText(restaurante.getTimeTable());
+                    intoleranciasRestaurantes.setText(restaurante.getIntolerance().get(0).getName());
+                    horarioRestaurante.setText(restaurante.getTimetable());
 
                 }else{
 
@@ -95,7 +90,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
             }
 
             @Override
-            public void onFailure(Call<OneResponseContainer<RestaurantResponse>> call, Throwable t) {
+            public void onFailure(Call<OneResponseContainer<Restaurant>> call, Throwable t) {
                 Log.e("NetworkFailure", t.getMessage());
                 Toast.makeText(RestaurantDetailsActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
 

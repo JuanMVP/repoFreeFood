@@ -1,6 +1,7 @@
 package com.example.freefoodapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInte
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
 import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
+import com.example.freefoodapp.ui.RestaurantDetailsActivity;
 
 import java.util.List;
 
@@ -42,19 +44,35 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.nombreRestaurante.setText(holder.mItem.getName());
         holder.direccionRestaurante.setText(holder.mItem.getAddress());
-        if(holder.mItem.getIntolerance() != null) {
-            holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().getName());
+        for(int i = 0; i < holder.mItem.getIntolerance().size(); i++){
+            holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().get(i).getName());
         }
+        /*if(holder.mItem.getIntolerance() != null) {
+            holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().get(0).getName());
+        }*/
         holder.horarioRestaurante.setText(holder.mItem.getTimetable());
-        if(holder.mItem.getListPhotos() != null){
-            Glide.with(ctx).load(holder.mItem.getListPhotos().get(0)).into(holder.imagenRestauranteLista);
+        if(holder.mItem.getPicture() != null){
+            Glide.with(ctx).load(holder.mItem.getPicture().getImgurLink()).into(holder.imagenRestauranteLista);
         }else{
             Glide.with(ctx).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(holder.imagenRestauranteLista);
         }
+
+
+
+        holder.imagenRestauranteLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ctx, RestaurantDetailsActivity.class);
+                i.putExtra("id",mValues.get(position).getId());
+                ctx.startActivity(i);
+
+
+            }
+        });
 
 
     }
