@@ -1,25 +1,44 @@
 <div fxLayout="column" fFlexFill>
   <h2>Añadir nuevo establecimiento</h2>
 
-  <form [formGroup]="addRestaurant" fxLayout="column">
-
       <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nombre del Restaurante" formControlName="name" name="name" />
+          <input matInput placeholder="Nombre del Restaurante" [formControl]="form.controls['name']" />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Direccion" formControlName="address" name="address" />
+        <input matInput placeholder="Direccion" [formControl]="form.controls['address']" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Intolerancias" formControlName="intolerance" name="intolerance" />
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Horario" formControlName="timetable" name="timetable" />
 </mat-form-field>
 
-</form>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Horario" [formControl]="form.controls['timetable']" />
+</mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="addNewRestaurant()">Crear Restaurante</button>
+<div>
+  <input type="file" accept="*" #file (change)="onFilesAdded()" [disabled]="uploading || uploadSuccessful" value="Seleccionar fichero" />
+</div>
+<br>
+
+
+<mat-dialog-content fxFlex>
+  <mat-list>
+    <mat-list-item *ngFor="let file of files">
+
+      <h4 mat-line>{{file.name}}</h4>
+
+      <mat-progress-bar *ngIf="progress" mode="determinate" [value]="progress[file.name].progress | async"></mat-progress-bar>
+
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+
+
+<mat-dialog-actions class="actions">
+    <button *ngIf="showCancelButton" mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">Añadir Restaurante</button>
+</mat-dialog-actions>
+
 </div>

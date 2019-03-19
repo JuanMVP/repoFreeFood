@@ -38,13 +38,20 @@ export class RestaurantsListComponent implements OnInit {
     })
   }
 
-  openDialogAddNewRestaurant(){
-    const dialogNewRecipe = this.dialog.open(AddRestaurantComponent);
-    
-    dialogNewRecipe.afterClosed().subscribe(resultado =>{
-      
-      this.getAllRestaurants("");
-    })
+  public openUploadDialog() {
+    const dialogRef = this.dialog.open(AddRestaurantComponent,
+      {
+        width: '500px',
+        data: { id: 1 }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.snackBar.open(
+        'El fichero se subió correctamente', 'Cerrar', {
+        duration: 3000,
+        verticalPosition: 'top'
+      });
+    });
   }
 
   openDialogEditRestaurant(restaurant: RestauranteResponse){

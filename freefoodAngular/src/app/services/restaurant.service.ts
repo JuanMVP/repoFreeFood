@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AddRestaurantDto } from '../dto/add-restaurant-dto';
+import { IntoleranceContainer } from '../interfaces/Intolerance-container-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,16 @@ export class RestaurantService {
 
     return this.http.post<RestauranteResponse>(`${environment.ApiUrl}/restaurants`, addRestaurant, requestOptions);
 
+  }
+
+  getAllIntolerances(): Observable<IntoleranceContainer>{
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    return this.http.get<IntoleranceContainer>(`${environment.ApiUrl}/intolerances`, requestOptions);
   }
 
 

@@ -1,5 +1,5 @@
 <div fxFlex="100%" fxFlexFill fxLayout="row wrap">
-  <button mat-raised-button color="primary"  class="add-button" (click)="openDialogAddNewRestaurant()">Agregar Recurso<mat-icon>add</mat-icon></button>
+  <button mat-raised-button color="primary"  class="add-button" (click)="openUploadDialog()">Agregar Recurso<mat-icon>add</mat-icon></button>
         <br/>
 <div  *ngFor="let restaurante of arrayRestaurantes.rows">
   <mat-card class="example-card" >
@@ -8,10 +8,10 @@
       <mat-card-title>{{restaurante.name}}</mat-card-title>
       <mat-card-subtitle>{{restaurante.address}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="{{restaurante.picture.imgurLink}}">
+        <img src="{{restaurante.picture}}" width="100em"> 
       <mat-card-content>
           <p>
-              {{restaurante.intolerance}}
+              {{restaurante.intolerances}}
           </p>
           <p>
               {{restaurante.timetable}}
