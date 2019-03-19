@@ -1,0 +1,25 @@
+<div fxLayout="column" fFlexFill>
+  <h2>Añadir nuevo establecimiento</h2>
+
+  <form [formGroup]="addRestaurant" fxLayout="column">
+
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nombre del Restaurante" formControlName="name" name="name" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Direccion" formControlName="address" name="address" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Intolerancias" formControlName="intolerance" name="intolerance" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Horario" formControlName="timetable" name="timetable" />
+</mat-form-field>
+
+</form>
+
+  <button mat-raised-button color="primary" (click)="addNewRestaurant()">Crear Restaurante</button>
+</div>

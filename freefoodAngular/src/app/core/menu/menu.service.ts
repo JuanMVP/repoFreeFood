@@ -34,6 +34,13 @@ const MENUITEMS = [
     icon: 'person'
   },
   {
+    state: 'restaurantes',
+    name: 'Restaurantes',
+    type: 'extTabLink',
+    icon: 'restaurant'
+
+  },
+  {
     state: '/session/signin',
     name: 'Logout',
     type: 'link',

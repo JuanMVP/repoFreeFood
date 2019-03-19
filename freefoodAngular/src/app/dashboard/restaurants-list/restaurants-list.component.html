@@ -1,0 +1,27 @@
+<div fxFlex="100%" fxFlexFill fxLayout="row wrap">
+  <button mat-raised-button color="primary"  class="add-button" (click)="openDialogAddNewRestaurant()">Agregar Recurso<mat-icon>add</mat-icon></button>
+        <br/>
+<div  *ngFor="let restaurante of arrayRestaurantes.rows">
+  <mat-card class="example-card" >
+      <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{restaurante.name}}</mat-card-title>
+      <mat-card-subtitle>{{restaurante.address}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{restaurante.picture.imgurLink}}">
+      <mat-card-content>
+          <p>
+              {{restaurante.intolerance}}
+          </p>
+          <p>
+              {{restaurante.timetable}}
+          </p>
+
+      </mat-card-content>
+      <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="openDialogDeleteRestaurant(restaurante)"><i class="material-icons">delete_forever</i></button>
+      <button mat-raised-button color="primary" (click)="openDialogEditRestaurant(restaurante)"><i class="material-icons">edit</i></button>
+      </mat-card-actions>
+  </mat-card>
+</div>
+</div>

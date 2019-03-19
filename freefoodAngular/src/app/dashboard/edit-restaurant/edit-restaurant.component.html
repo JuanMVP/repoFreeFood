@@ -1,0 +1,32 @@
+<div fxLayout="column" fFlexFill>
+  <h2>Editar Restaurant</h2>
+
+  <form *ngIf="editRestaurant" [formGroup]="editRestaurant" fxLayout="column">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nombre de la Receta" formControlName="name" name="name" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="direccion" formControlName="address" name="address" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="intolerancias" formControlName="intolerance" name="intolerance" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Horario y Telefono" formControlName="timetable" name="timetable" />
+    </mat-form-field>
+
+
+
+
+
+
+
+
+  </form>
+
+  <button mat-raised-button color="primary" (click)="editOneRestaurant()">Crear Restaurante</button>
+</div>
