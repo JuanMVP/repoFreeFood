@@ -10,11 +10,11 @@ public class Restaurant {
     private List<Intolerance> intolerance;
     private String timetable;
     private String loc;
-    private Picture picture;
+    private String picture;
 
     public Restaurant(){}
 
-    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String loc, Picture picture) {
+    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String loc, String picture) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -23,6 +23,7 @@ public class Restaurant {
         this.loc = loc;
         this.picture = picture;
     }
+
 
     public String getId() {
         return id;
@@ -72,13 +73,14 @@ public class Restaurant {
         this.loc = loc;
     }
 
-    public Picture getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Picture picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
+
 
     @Override
     public String toString() {
@@ -89,7 +91,7 @@ public class Restaurant {
                 ", intolerance=" + intolerance +
                 ", timetable='" + timetable + '\'' +
                 ", loc='" + loc + '\'' +
-                ", picture=" + picture +
+                ", picture='" + picture + '\'' +
                 '}';
     }
 }

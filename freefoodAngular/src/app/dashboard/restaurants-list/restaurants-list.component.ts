@@ -27,8 +27,8 @@ export class RestaurantsListComponent implements OnInit {
 
   getAllRestaurants(mensaje: string){
     this.restauranteService.listaRestaurantes().subscribe(listaRestaurantes =>{
-      console.log(listaRestaurantes);
-      this.arrayRestaurantes = listaRestaurantes
+      console.log("restaurante:"+listaRestaurantes);
+      this.arrayRestaurantes = listaRestaurantes.rows;
       
     }, error =>{
       console.error(error);

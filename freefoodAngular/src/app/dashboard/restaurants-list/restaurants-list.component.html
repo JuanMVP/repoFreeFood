@@ -1,7 +1,7 @@
 <div fxFlex="100%" fxFlexFill fxLayout="row wrap">
   <button mat-raised-button color="primary"  class="add-button" (click)="openUploadDialog()">Agregar Recurso<mat-icon>add</mat-icon></button>
         <br/>
-<div  *ngFor="let restaurante of arrayRestaurantes.rows">
+<div  *ngFor="let restaurante of arrayRestaurantes">
   <mat-card class="example-card" >
       <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>

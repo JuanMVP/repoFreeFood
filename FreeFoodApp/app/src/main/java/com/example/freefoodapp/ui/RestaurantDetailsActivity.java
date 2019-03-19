@@ -19,6 +19,7 @@ import com.example.freefoodapp.responses.RestaurantResponse;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RestaurantService;
 import com.example.freefoodapp.util.Util;
+import com.example.freefoodapp.util.UtilToken;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -33,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantDetailsActivity extends AppCompatActivity implements OnMapReadyCallback{
-    private String token;
+    private String token,restauranteId,nombre,direccion,intolerancias,horarioTelefono;
     private TextView nombreRestaurante,direccionRestaurante,horarioRestaurante,intoleranciasRestaurantes;
     private MapView mapView;
     private ViewPager fotosPage;
@@ -46,10 +47,12 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
         setContentView(R.layout.activity_restaurant_details);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+
         final Intent i = getIntent();
         String idRestaurante = i.getStringExtra("id");
 
-        token = Util.getToken(this);
+        token = UtilToken.getToken(RestaurantDetailsActivity.this);
         nombreRestaurante = findViewById(R.id.nombreRestaurante);
         direccionRestaurante = findViewById(R.id.direccionRestaurante);
         horarioRestaurante = findViewById(R.id.timetableDetailRestaurant);
@@ -69,11 +72,11 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
                 if(response.isSuccessful()){
 
                     restaurante = response.body().getRows();
-                    if(restaurante.getPicture().getImgurLink() != null){
-                        Glide.with(RestaurantDetailsActivity.this).load(restaurante.getPicture().getImgurLink()).into(imagenDetalle);
-                    }else{
+                    //if(restaurante.getPicture() != null){
+                        Glide.with(RestaurantDetailsActivity.this).load(restaurante.getPicture()).into(imagenDetalle);
+                   /* }else{
                         Glide.with(RestaurantDetailsActivity.this).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(imagenDetalle);
-                    }
+                    }*/
 
 
                     nombreRestaurante.setText(restaurante.getName());
@@ -82,6 +85,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
                     horarioRestaurante.setText(restaurante.getTimetable());
 
                 }else{
+
 
                     Toast.makeText(RestaurantDetailsActivity.this, "Error al ver el Restaurante", Toast.LENGTH_SHORT).show();
 

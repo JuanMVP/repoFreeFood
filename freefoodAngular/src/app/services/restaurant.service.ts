@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AddRestaurantDto } from '../dto/add-restaurant-dto';
 import { IntoleranceContainer } from '../interfaces/Intolerance-container-interface';
+import { RestaurantContainer } from '../interfaces/restaurant-container.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class RestaurantService {
   constructor(private http: HttpClient) { }
 
 
-  listaRestaurantes(): Observable<RestauranteResponse[]>{
+  listaRestaurantes(): Observable<RestaurantContainer>{
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -23,7 +24,7 @@ export class RestaurantService {
       })
     };
 
-    return this.http.get<RestauranteResponse[]>(`${environment.ApiUrl}/restaurants`, requestOptions);
+    return this.http.get<RestaurantContainer>(`${environment.ApiUrl}/restaurants`, requestOptions);
 
   }
 

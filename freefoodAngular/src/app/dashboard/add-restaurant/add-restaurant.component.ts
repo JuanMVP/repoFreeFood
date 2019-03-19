@@ -15,6 +15,7 @@ import { Intolerance } from 'src/app/interfaces/Intolerance-response-interface';
 export class AddRestaurantComponent implements OnInit {
   form: FormGroup;
   allIntolerances: Intolerance[];
+  intoleranceSelected;
 
   @ViewChild('file') file;
   progress;
@@ -28,19 +29,17 @@ export class AddRestaurantComponent implements OnInit {
   constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddRestaurantComponent>, public snackBar: MatSnackBar,private restauranteService: RestaurantService,@Inject(MAT_DIALOG_DATA) public data: any, private uploadService: UploadService) { }
 
   ngOnInit() {
-    this.createForm();
-  }
-  
-
-    createForm() {
-    this.form = this.fb.group ({
+    this.form = this.fb.group({
       name: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
       intolerance: [null, Validators.compose([Validators.required])],
       timetable: [null, Validators.compose([Validators.required])],
-      
     });
+    this.getAllIntolerances();
   }
+  
+
+  
   addNewRestaurant(){
     this.restauranteService.addRestaurant(<AddRestaurantDto>this.form.value).subscribe(restaurante =>{
       this.dialogRef.close();

@@ -15,7 +15,7 @@ export class UploadService {
 
   public upload(files: Set<File>, form: AddRestaurantDto): { [key: string]: Observable<number> } {
     // this will be the our resulting map
-    this.uploadUrl = `http://localhost:9011/restaurants?access_token=${this.token}`;
+    this.uploadUrl = `https://free-food-api.herokuapp.com/restaurants?access_token=${this.token}`;
     const status = {};
 
     files.forEach(file => {

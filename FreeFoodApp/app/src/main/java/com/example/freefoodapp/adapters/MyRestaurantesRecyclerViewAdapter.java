@@ -14,7 +14,6 @@ import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
 import com.example.freefoodapp.models.Restaurant;
-import com.example.freefoodapp.responses.RestaurantResponse;
 import com.example.freefoodapp.ui.RestaurantDetailsActivity;
 
 import java.util.List;
@@ -56,7 +55,7 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
         }*/
         holder.horarioRestaurante.setText(holder.mItem.getTimetable());
         if(holder.mItem.getPicture() != null){
-            Glide.with(ctx).load(holder.mItem.getPicture().getImgurLink()).into(holder.imagenRestauranteLista);
+            Glide.with(ctx).load(holder.mItem.getPicture()).into(holder.imagenRestauranteLista);
         }else{
             Glide.with(ctx).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(holder.imagenRestauranteLista);
         }
@@ -92,10 +91,10 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            imagenRestauranteLista =  view.findViewById(R.id.restauranteImagenList);
+            imagenRestauranteLista =  view.findViewById(R.id.recetasImagenList);
             imgLocationRestaurante =  view.findViewById(R.id.RestauranteListLocation);
             imgFavRestaurante = view.findViewById(R.id.restauranteListFav);
-            nombreRestaurante = view.findViewById(R.id.nombreRestauranteList);
+            nombreRestaurante = view.findViewById(R.id.nombreRecetaList);
             direccionRestaurante= view.findViewById(R.id.direccionRestauranteList);
             intoleranciasRestaurante = view.findViewById(R.id.intoleranciasRestauranteList);
             horarioRestaurante = view.findViewById(R.id.horarioRestauranteList);

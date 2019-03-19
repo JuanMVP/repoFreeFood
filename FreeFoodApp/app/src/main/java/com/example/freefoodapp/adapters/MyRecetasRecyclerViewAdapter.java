@@ -1,30 +1,32 @@
 package com.example.freefoodapp.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RecetasFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
+import com.example.freefoodapp.models.Recipe;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetasRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Recipe> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private Context ctx;
 
-    public MyRecetasRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyRecetasRecyclerViewAdapter(Context context, int layout,List<Recipe> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
+        this.ctx = context;
     }
 
     @Override
@@ -37,19 +39,11 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.nombreReceta.setText(holder.mItem.getName());
+        holder.ingredientesReceta.setText(holder.mItem.getIngredients());
+        Glide.with(ctx).load(holder.mItem.getPicture()).into(holder.imagenRecetaList);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+
     }
 
     @Override
@@ -59,20 +53,17 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView nombreReceta,ingredientesReceta;
+        public final ImageView imagenRecetaList;
+        public Recipe mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            nombreReceta =  view.findViewById(R.id.nombreRecetaList);
+            ingredientesReceta =  view.findViewById(R.id.ingredientesRecetasList);
+            imagenRecetaList = view.findViewById(R.id.recetasImagenList);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
-    }
-}
+
+} }

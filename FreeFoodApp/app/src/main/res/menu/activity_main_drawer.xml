@@ -13,9 +13,9 @@
             android:icon="@drawable/ic_restaurant"
             android:title="Restaurantes" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_recetas"
+            android:icon="@drawable/ic_recipe_book"
+            android:title="Recetas" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

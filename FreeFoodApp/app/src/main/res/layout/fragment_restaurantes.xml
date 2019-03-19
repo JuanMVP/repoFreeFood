@@ -23,12 +23,12 @@
             android:layout_marginRight="24dp"
             app:layout_constraintBottom_toTopOf="@+id/direccionRestauranteList"
             app:layout_constraintEnd_toStartOf="@+id/restauranteListFav"
-            app:layout_constraintTop_toBottomOf="@+id/restauranteImagenList"
+            app:layout_constraintTop_toBottomOf="@+id/recetasImagenList"
             app:layout_constraintVertical_bias="0.533"
             app:srcCompat="@drawable/ic_placeholder" />
 
         <ImageView
-            android:id="@+id/restauranteImagenList"
+            android:id="@+id/recetasImagenList"
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:layout_marginStart="1dp"
@@ -40,7 +40,7 @@
             app:srcCompat="@drawable/restaurante" />
 
         <TextView
-            android:id="@+id/nombreRestauranteList"
+            android:id="@+id/nombreRecetaList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -55,7 +55,7 @@
             app:layout_constraintEnd_toStartOf="@+id/RestauranteListLocation"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restauranteImagenList" />
+            app:layout_constraintTop_toBottomOf="@+id/recetasImagenList" />
 
         <TextView
             android:id="@+id/intoleranciasRestauranteList"
@@ -117,7 +117,7 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toTopOf="@+id/direccionRestauranteList"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restauranteImagenList"
+            app:layout_constraintTop_toBottomOf="@+id/recetasImagenList"
             app:srcCompat="@drawable/ic_corazon" />
 
         <TextView
@@ -133,7 +133,7 @@
             app:fontFamily="casual"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nombreRestauranteList" />
+            app:layout_constraintTop_toBottomOf="@+id/nombreRecetaList" />
 
     </android.support.constraint.ConstraintLayout>
 

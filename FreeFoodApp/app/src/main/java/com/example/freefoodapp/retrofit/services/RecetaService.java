@@ -1,5 +1,6 @@
 package com.example.freefoodapp.retrofit.services;
 
+import com.example.freefoodapp.models.Recipe;
 import com.example.freefoodapp.models.ResponseContainer;
 import com.example.freefoodapp.responses.RecetaResponse;
 
@@ -10,6 +11,6 @@ public interface RecetaService {
 
 
     @GET("/recipes")
-    Call<ResponseContainer<RecetaResponse>> getRecetas();
+    Call<ResponseContainer<Recipe>> getRecetas();
 
 }

@@ -1,44 +1,64 @@
 <div fxLayout="column" fFlexFill>
   <h2>Añadir nuevo establecimiento</h2>
+  <form [formGroup]="form">
 
-      <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nombre del Restaurante" [formControl]="form.controls['name']" />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Direccion" [formControl]="form.controls['address']" />
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nombre del Restaurante" [formControl]="form.controls['name']" />
     </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Direccion" [formControl]="form.controls['address']" />
+    </mat-form-field>
+    <br />
+
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Intolerancias" formControlName="intolerance" name="intolerance" />
-</mat-form-field>
+    </mat-form-field>
+    <br />
 
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Horario" [formControl]="form.controls['timetable']" />
-</mat-form-field>
-
-<div>
-  <input type="file" accept="*" #file (change)="onFilesAdded()" [disabled]="uploading || uploadSuccessful" value="Seleccionar fichero" />
-</div>
-<br>
-
-
-<mat-dialog-content fxFlex>
-  <mat-list>
-    <mat-list-item *ngFor="let file of files">
-
-      <h4 mat-line>{{file.name}}</h4>
-
-      <mat-progress-bar *ngIf="progress" mode="determinate" [value]="progress[file.name].progress | async"></mat-progress-bar>
-
-    </mat-list-item>
-  </mat-list>
-</mat-dialog-content>
+    <!--<mat-form-field>
+      <mat-select placeholder="Intolerancia" [formControl]="form.controls['intolerance']" [(value)]="intoleranceSelected" name = "intolerance">
+    <mat-option *ngFor="let intolerance of allIntolerances" [value]="intolerance.id">
+      {{intolerance.name}}
+    </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <br/>-->
 
 
-<mat-dialog-actions class="actions">
-    <button *ngIf="showCancelButton" mat-button mat-dialog-close>Cancelar</button>
-    <button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">Añadir Restaurante</button>
-</mat-dialog-actions>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Horario" [formControl]="form.controls['timetable']" />
+    </mat-form-field>
+    <br />
 
+
+    <div>
+      <input type="file" accept="*" #file (change)="onFilesAdded()" [disabled]="uploading || uploadSuccessful"
+        value="Seleccionar fichero" />
+    </div>
+    <br>
+
+
+    <mat-dialog-content fxFlex>
+      <mat-list>
+        <mat-list-item *ngFor="let file of files">
+
+          <h4 mat-line>{{file.name}}</h4>
+
+          <mat-progress-bar *ngIf="progress" mode="determinate" [value]="progress[file.name].progress | async">
+          </mat-progress-bar>
+
+        </mat-list-item>
+      </mat-list>
+    </mat-dialog-content>
+
+
+    <mat-dialog-actions class="actions">
+      <button *ngIf="showCancelButton" mat-button mat-dialog-close>Cancelar</button>
+      <button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">Añadir
+        Restaurante</button>
+    </mat-dialog-actions>
+  </form>
 </div>

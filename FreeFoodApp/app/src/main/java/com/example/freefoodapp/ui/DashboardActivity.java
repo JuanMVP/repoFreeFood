@@ -15,11 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.freefoodapp.R;
+import com.example.freefoodapp.fragments.RecetasFragment;
 import com.example.freefoodapp.fragments.RestaurantesFragment;
 import com.example.freefoodapp.fragments.dummy.DummyContent;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RestaurantesFragment.OnListFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RestaurantesFragment.OnListFragmentInteractionListener, RecetasFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,8 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_restaurant) {
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_recetas) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RecetasFragment()).commit();
 
         } else if (id == R.id.nav_manage) {
 
