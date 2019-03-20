@@ -5,10 +5,14 @@ import com.example.freefoodapp.models.Recipe;
 import com.example.freefoodapp.models.ResponseContainer;
 import com.example.freefoodapp.responses.RecetaResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface RecetaService {
@@ -20,7 +24,12 @@ public interface RecetaService {
     @GET("/recipes/{id}")
     Call<Recipe> getOneRecipe(@Path("id") String id);
 
+    @Multipart
     @POST("/recipes")
-    Call<Recipe> addReceta(@Body Recipe receta);
+    Call<Recipe> addReceta(@Part MultipartBody.Part picture,
+                           @Part("name")RequestBody name,
+                           @Part("ingredients")RequestBody ingredients,
+                           @Part("description")RequestBody description,
+                           @Part("dinnerGuest")RequestBody dinnerGuest);
 
 }
