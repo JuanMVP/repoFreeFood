@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
-import com.example.freefoodapp.models.OneResponseContainer;
 import com.example.freefoodapp.models.Recipe;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RecetaService;
@@ -40,17 +39,17 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         token = UtilToken.getToken(RecipeDetailsActivity.this);
         nombreReceta = findViewById(R.id.nombreReceta);
         ingredientesReceta = findViewById(R.id.ingredientesRecetaDetalle);
-        comensalesReceta = findViewById(R.id.comensalesReceta);
+        comensalesReceta = findViewById(R.id.comensalesAddReceta);
         descripcionReceta = findViewById(R.id.descripcionReceta);
         imagenDetellaReceta = findViewById(R.id.imagenRecetaDetalle);
 
         final RecetaService recetaService = ServiceGenerator.createService(RecetaService.class);
-        Call<OneResponseContainer<Recipe>> callOneRecipe = recetaService.getOneRecipe(idReceta);
-        callOneRecipe.enqueue(new Callback<OneResponseContainer<Recipe>>() {
+        Call<Recipe> callOneRecipe = recetaService.getOneRecipe(idReceta);
+        callOneRecipe.enqueue(new Callback<Recipe>() {
             @Override
-            public void onResponse(Call<OneResponseContainer<Recipe>> call, Response<OneResponseContainer<Recipe>> response) {
+            public void onResponse(Call<Recipe> call, Response<Recipe> response) {
                 if(response.isSuccessful()){
-                    receta = response.body().getRows();
+                    receta = response.body();
                     Glide.with(RecipeDetailsActivity.this).load(receta.getPicture()).into(imagenDetellaReceta);
                     nombreReceta.setText(receta.getName());
                     ingredientesReceta.setText(receta.getIngredients());
@@ -63,7 +62,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<OneResponseContainer<Recipe>> call, Throwable t) {
+            public void onFailure(Call<Recipe> call, Throwable t) {
                 Log.e("NetworkFailure", t.getMessage());
                 Toast.makeText(RecipeDetailsActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
 

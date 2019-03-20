@@ -50,9 +50,7 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
         for(int i = 0; i < holder.mItem.getIntolerance().size(); i++){
             holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().get(i).getName());
         }
-        /*if(holder.mItem.getIntolerance() != null) {
-            holder.intoleranciasRestaurante.setText(holder.mItem.getIntolerance().get(0).getName());
-        }*/
+
         holder.horarioRestaurante.setText(holder.mItem.getTimetable());
         if(holder.mItem.getPicture() != null){
             Glide.with(ctx).load(holder.mItem.getPicture()).into(holder.imagenRestauranteLista);
@@ -85,14 +83,13 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
         public final View mView;
 
         public Restaurant mItem;
-        public ImageView imagenRestauranteLista, imgLocationRestaurante, imgFavRestaurante;
+        public ImageView imagenRestauranteLista, imgFavRestaurante;
         public TextView nombreRestaurante,direccionRestaurante,intoleranciasRestaurante,horarioRestaurante;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             imagenRestauranteLista =  view.findViewById(R.id.recetasImagenList);
-            imgLocationRestaurante =  view.findViewById(R.id.RestauranteListLocation);
             imgFavRestaurante = view.findViewById(R.id.recetasListFav);
             nombreRestaurante = view.findViewById(R.id.nombreRecetaList);
             direccionRestaurante= view.findViewById(R.id.direccionRestauranteList);

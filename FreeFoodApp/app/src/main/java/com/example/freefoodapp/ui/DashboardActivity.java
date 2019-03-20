@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +25,8 @@ import com.example.freefoodapp.fragments.dummy.DummyContent;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, RestaurantesFragment.OnListFragmentInteractionListener, RecetasFragment.OnListFragmentInteractionListener {
 
+     FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +55,7 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
+        fab.hide();
 
     }
 
@@ -95,9 +101,19 @@ public class DashboardActivity extends AppCompatActivity
             startActivity(new Intent(DashboardActivity.this,LoginActivity.class));
         } else if (id == R.id.nav_restaurant) {
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
+            fab.hide();
+
 
         } else if (id == R.id.nav_recetas) {
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RecetasFragment()).commit();
+            fab.show();
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(DashboardActivity.this,AddRecipeActivity.class));
+                }
+            });
+
 
         } else if (id == R.id.nav_manage) {
 

@@ -12,33 +12,21 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
-import com.example.freefoodapp.models.OneResponseContainer;
 import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RestaurantService;
 import com.example.freefoodapp.util.UtilToken;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.Collections;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RestaurantDetailsActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class RestaurantDetailsActivity extends AppCompatActivity {
     private String token;
-    private TextView nombreRestaurante,direccionRestaurante,horarioRestaurante,intoleranciasRestaurantes;
-    private MapView mapView;
+    private TextView nombreRestaurante,direccionRestaurante,horarioRestaurante,intoleranciasRestaurantes,restauranteDescripcion;
     private ViewPager fotosPage;
     private Restaurant restaurante;
     private ImageView imagenDetalleRest;
-    private List<String> loc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +42,11 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
         token = UtilToken.getToken(RestaurantDetailsActivity.this);
         nombreRestaurante = findViewById(R.id.nombreReceta);
         direccionRestaurante = findViewById(R.id.ingredientesRecetaDetalle);
-        horarioRestaurante = findViewById(R.id.comensalesReceta);
+        horarioRestaurante = findViewById(R.id.comensalesAddReceta);
         intoleranciasRestaurantes = findViewById(R.id.intoleranciasDetailsRestaurant);
         imagenDetalleRest = findViewById(R.id.imagenDetalle);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync( this);
+        restauranteDescripcion = findViewById(R.id.descripcionRestaurante);
+
 
 
 
@@ -82,6 +70,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
                     direccionRestaurante.setText(restaurante.getAddress());
                     intoleranciasRestaurantes.setText(restaurante.getIntolerance().get(0).getName());
                     horarioRestaurante.setText(restaurante.getTimetable());
+                    restauranteDescripcion.setText(restaurante.getDescription());
 
                 }else{
 
@@ -104,61 +93,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    protected void onPause() {
-        mapView.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        mapView.onDestroy();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        String[] latlong = loc.toArray(new String[0]);
-
-        double lat = Double.parseDouble(latlong[0]);
-        Double lon = Double.parseDouble(latlong[1]);
-
-        LatLng latLng = new LatLng(lat, lon);
-        googleMap.setMinZoomPreference(12);
-
-        googleMap.addMarker(new MarkerOptions()
-        .position(latLng)
-        .title(restaurante.getName())
-        .draggable(true));
-
-
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,13));
-
-    }
 
 
 }

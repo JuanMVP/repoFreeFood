@@ -12,10 +12,11 @@ public class Restaurant {
     private String timetable;
     private String loc[];
     private String picture;
+    private String description;
 
     public Restaurant(){}
 
-    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String[] loc, String picture) {
+    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String[] loc, String picture, String description) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -23,8 +24,8 @@ public class Restaurant {
         this.timetable = timetable;
         this.loc = loc;
         this.picture = picture;
+        this.description = description;
     }
-
 
     public String getId() {
         return id;
@@ -82,6 +83,14 @@ public class Restaurant {
         this.picture = picture;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     @Override
     public String toString() {
@@ -93,6 +102,7 @@ public class Restaurant {
                 ", timetable='" + timetable + '\'' +
                 ", loc=" + Arrays.toString(loc) +
                 ", picture='" + picture + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

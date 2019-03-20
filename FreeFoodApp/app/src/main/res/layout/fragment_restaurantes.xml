@@ -16,18 +16,6 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/RestauranteListLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/direccionRestauranteList"
-            app:layout_constraintEnd_toStartOf="@+id/recetasListFav"
-            app:layout_constraintTop_toBottomOf="@+id/recetasImagenList"
-            app:layout_constraintVertical_bias="0.533"
-            app:srcCompat="@drawable/ic_placeholder" />
-
-        <ImageView
             android:id="@+id/recetasImagenList"
             android:layout_width="0dp"
             android:layout_height="180dp"
@@ -45,15 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:text="Nombre Restaurante"
             android:textColor="#333333"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="casual"
-            app:layout_constraintEnd_toStartOf="@+id/RestauranteListLocation"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recetasImagenList" />
 
@@ -84,13 +68,9 @@
             android:layout_height="20dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="TODO"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/horarioRestauranteList"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intoleranciasRestauranteList"
             app:layout_constraintVertical_bias="0.0"
@@ -100,23 +80,30 @@
             android:id="@+id/horarioRestauranteList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="212dp"
-            android:layout_marginRight="212dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:text="horario - restaurante"
             app:fontFamily="casual"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/intoleranciasRestauranteList" />
+            app:layout_constraintStart_toEndOf="@+id/iconoHorariosList"
+            app:layout_constraintTop_toBottomOf="@+id/intoleranciasRestauranteList"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/recetasListFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toTopOf="@+id/direccionRestauranteList"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nombreRecetaList"
             app:layout_constraintTop_toBottomOf="@+id/recetasImagenList"
             app:srcCompat="@drawable/ic_corazon" />
 
