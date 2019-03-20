@@ -1,7 +1,7 @@
 package com.example.freefoodapp.models;
 
 public class Recipe {
-
+    private String id;
     private String name;
     private String description;
     private String ingredients;
@@ -10,12 +10,21 @@ public class Recipe {
 
     public Recipe (){}
 
-    public Recipe(String name, String description, String ingredients, String dinnerGuest, String picture) {
+    public Recipe(String id, String name, String description, String ingredients, String dinnerGuest, String picture) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
         this.dinnerGuest = dinnerGuest;
         this.picture = picture;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,11 +67,11 @@ public class Recipe {
         this.picture = picture;
     }
 
-
     @Override
     public String toString() {
         return "Recipe{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", ingredients='" + ingredients + '\'' +
                 ", dinnerGuest='" + dinnerGuest + '\'' +

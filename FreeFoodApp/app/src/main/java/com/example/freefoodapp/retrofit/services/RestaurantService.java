@@ -15,5 +15,5 @@ public interface RestaurantService {
     Call<ResponseContainer<Restaurant>> getRestaurants();
 
     @GET("/restaurants/{id}")
-    Call<OneResponseContainer<Restaurant>> getOneRestaurant(@Path("id") String id);
+    Call<Restaurant> getOneRestaurant(@Path("id") String id);
 }

@@ -93,7 +93,7 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
             mView = view;
             imagenRestauranteLista =  view.findViewById(R.id.recetasImagenList);
             imgLocationRestaurante =  view.findViewById(R.id.RestauranteListLocation);
-            imgFavRestaurante = view.findViewById(R.id.restauranteListFav);
+            imgFavRestaurante = view.findViewById(R.id.recetasListFav);
             nombreRestaurante = view.findViewById(R.id.nombreRecetaList);
             direccionRestaurante= view.findViewById(R.id.direccionRestauranteList);
             intoleranciasRestaurante = view.findViewById(R.id.intoleranciasRestauranteList);

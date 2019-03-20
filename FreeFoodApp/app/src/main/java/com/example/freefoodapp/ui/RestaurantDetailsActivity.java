@@ -12,21 +12,19 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
-import com.example.freefoodapp.adapters.PhotoAdapter;
 import com.example.freefoodapp.models.OneResponseContainer;
 import com.example.freefoodapp.models.Restaurant;
-import com.example.freefoodapp.responses.RestaurantResponse;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RestaurantService;
-import com.example.freefoodapp.util.Util;
 import com.example.freefoodapp.util.UtilToken;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.smarteist.autoimageslider.DefaultSliderView;
-import com.smarteist.autoimageslider.SliderLayout;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,12 +32,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantDetailsActivity extends AppCompatActivity implements OnMapReadyCallback{
-    private String token,restauranteId,nombre,direccion,intolerancias,horarioTelefono;
+    private String token;
     private TextView nombreRestaurante,direccionRestaurante,horarioRestaurante,intoleranciasRestaurantes;
     private MapView mapView;
     private ViewPager fotosPage;
     private Restaurant restaurante;
-    private ImageView imagenDetalle;
+    private ImageView imagenDetalleRest;
+    private List<String> loc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,27 +52,27 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
         String idRestaurante = i.getStringExtra("id");
 
         token = UtilToken.getToken(RestaurantDetailsActivity.this);
-        nombreRestaurante = findViewById(R.id.nombreRestaurante);
-        direccionRestaurante = findViewById(R.id.direccionRestaurante);
-        horarioRestaurante = findViewById(R.id.timetableDetailRestaurant);
+        nombreRestaurante = findViewById(R.id.nombreReceta);
+        direccionRestaurante = findViewById(R.id.ingredientesRecetaDetalle);
+        horarioRestaurante = findViewById(R.id.comensalesReceta);
         intoleranciasRestaurantes = findViewById(R.id.intoleranciasDetailsRestaurant);
-        imagenDetalle = findViewById(R.id.imagenDetalle);
-        /*mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync( this);*/
+        imagenDetalleRest = findViewById(R.id.imagenDetalle);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync( this);
 
 
 
 
         final RestaurantService restaurantService = ServiceGenerator.createService(RestaurantService.class);
-        Call<OneResponseContainer<Restaurant>> callOneRestaurant = restaurantService.getOneRestaurant(idRestaurante);
-        callOneRestaurant.enqueue(new Callback<OneResponseContainer<Restaurant>>() {
+        Call<Restaurant> callOneRestaurant = restaurantService.getOneRestaurant(idRestaurante);
+        callOneRestaurant.enqueue(new Callback<Restaurant>() {
             @Override
-            public void onResponse(Call<OneResponseContainer<Restaurant>> call, Response<OneResponseContainer<Restaurant>> response) {
+            public void onResponse(Call<Restaurant> call, Response<Restaurant>response) {
                 if(response.isSuccessful()){
 
-                    restaurante = response.body().getRows();
+                    restaurante = response.body();
                     //if(restaurante.getPicture() != null){
-                        Glide.with(RestaurantDetailsActivity.this).load(restaurante.getPicture()).into(imagenDetalle);
+                        Glide.with(RestaurantDetailsActivity.this).load(restaurante.getPicture()).into(imagenDetalleRest);
                    /* }else{
                         Glide.with(RestaurantDetailsActivity.this).load("https://u.tfstatic.com/restaurant_photos/665/68665/169/612/happy-day-vegetariano-vista-sala-a902a.jpg").into(imagenDetalle);
                     }*/
@@ -94,7 +93,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
             }
 
             @Override
-            public void onFailure(Call<OneResponseContainer<Restaurant>> call, Throwable t) {
+            public void onFailure(Call<Restaurant> call, Throwable t) {
                 Log.e("NetworkFailure", t.getMessage());
                 Toast.makeText(RestaurantDetailsActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
 
@@ -104,8 +103,62 @@ public class RestaurantDetailsActivity extends AppCompatActivity implements OnMa
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        mapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mapView.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        String[] latlong = loc.toArray(new String[0]);
+
+        double lat = Double.parseDouble(latlong[0]);
+        Double lon = Double.parseDouble(latlong[1]);
+
+        LatLng latLng = new LatLng(lat, lon);
+        googleMap.setMinZoomPreference(12);
+
+        googleMap.addMarker(new MarkerOptions()
+        .position(latLng)
+        .title(restaurante.getName())
+        .draggable(true));
+
+
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,13));
 
     }
+
+
 }

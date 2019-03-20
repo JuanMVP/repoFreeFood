@@ -1,6 +1,7 @@
 package com.example.freefoodapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RecetasFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
 import com.example.freefoodapp.models.Recipe;
+import com.example.freefoodapp.ui.RecipeDetailsActivity;
 
 import java.util.List;
 
@@ -37,11 +39,19 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.nombreReceta.setText(holder.mItem.getName());
         holder.ingredientesReceta.setText(holder.mItem.getIngredients());
         Glide.with(ctx).load(holder.mItem.getPicture()).into(holder.imagenRecetaList);
+        holder.imagenRecetaList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ctx, RecipeDetailsActivity.class);
+                i.putExtra("id",mValues.get(position).getId());
+                ctx.startActivity(i);
+            }
+        });
 
 
     }
@@ -54,7 +64,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView nombreReceta,ingredientesReceta;
-        public final ImageView imagenRecetaList;
+        public final ImageView imagenRecetaList, imagenFavReceta;
         public Recipe mItem;
 
         public ViewHolder(View view) {
@@ -63,6 +73,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             nombreReceta =  view.findViewById(R.id.nombreRecetaList);
             ingredientesReceta =  view.findViewById(R.id.ingredientesRecetasList);
             imagenRecetaList = view.findViewById(R.id.recetasImagenList);
+            imagenFavReceta = view.findViewById(R.id.recetasListFav);
         }
 
 
