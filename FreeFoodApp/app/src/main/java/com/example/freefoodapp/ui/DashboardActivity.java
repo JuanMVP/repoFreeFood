@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.freefoodapp.R;
+import com.example.freefoodapp.fragments.RecetasFavoritasFragment;
 import com.example.freefoodapp.fragments.RecetasFragment;
 import com.example.freefoodapp.fragments.RestaurantesFragment;
 import com.example.freefoodapp.fragments.dummy.DummyContent;
@@ -115,7 +116,9 @@ public class DashboardActivity extends AppCompatActivity
             });
 
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_recetas_favoritas) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RecetasFavoritasFragment()).commit();
+            fab.hide();
 
         } else if (id == R.id.nav_share) {
 

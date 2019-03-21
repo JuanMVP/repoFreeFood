@@ -9,17 +9,9 @@ public class Recipe implements Serializable {
     private String ingredients;
     private String dinnerGuest;
     private String picture;
+    private boolean isFav;
 
     public Recipe (){}
-
-    public Recipe(String id, String name, String description, String ingredients, String dinnerGuest, String picture) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.ingredients = ingredients;
-        this.dinnerGuest = dinnerGuest;
-        this.picture = picture;
-    }
 
     public Recipe(String name, String description, String ingredients, String dinnerGuest) {
         this.name = name;
@@ -28,12 +20,14 @@ public class Recipe implements Serializable {
         this.dinnerGuest = dinnerGuest;
     }
 
-    public Recipe(String nombreAdd, String ingredientesAdd, String descriptionAdd, String dinnerGuestAdd, String userId) {
-        this.id = userId;
-        this.name = nombreAdd;
-        this.ingredients = ingredientesAdd;
-        this.description = descriptionAdd;
-        this.dinnerGuest = dinnerGuestAdd;
+    public Recipe(String id, String name, String description, String ingredients, String dinnerGuest, String picture, boolean isFav) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.dinnerGuest = dinnerGuest;
+        this.picture = picture;
+        this.isFav = isFav;
     }
 
     public String getId() {
@@ -84,6 +78,14 @@ public class Recipe implements Serializable {
         this.picture = picture;
     }
 
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
+    }
+
     @Override
     public String toString() {
         return "Recipe{" +
@@ -93,6 +95,7 @@ public class Recipe implements Serializable {
                 ", ingredients='" + ingredients + '\'' +
                 ", dinnerGuest='" + dinnerGuest + '\'' +
                 ", picture='" + picture + '\'' +
+                ", isFav=" + isFav +
                 '}';
     }
 }

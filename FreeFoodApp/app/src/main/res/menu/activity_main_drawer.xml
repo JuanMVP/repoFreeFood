@@ -17,9 +17,9 @@
             android:icon="@drawable/ic_recipe_book"
             android:title="Recetas" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_recetas_favoritas"
+            android:icon="@drawable/ic_wishlist"
+            android:title="Mis Recetas Favoritas" />
     </group>
 
     <item android:title="Communicate">

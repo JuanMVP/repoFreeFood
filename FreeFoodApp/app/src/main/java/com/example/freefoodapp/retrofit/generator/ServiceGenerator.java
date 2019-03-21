@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-     /*private static final String BASE_URL = "https://inmodroid.herokuapp.com/";
+     /*private static final String BASE_URL = "http://localhost:9011";
 
     public static final String MASTER_KEY = "ZPgUSMUlq4N7hIbuyRU1BsUn1U457dz6";*/
 

@@ -40,4 +40,15 @@ public interface RecetaService {
     @DELETE("recipes/{id}")
     Call<ResponseContainer<Recipe>> deleteOneRecipe(@Path("id") String id);
 
+    @GET("/recipes/fav")
+    Call<ResponseContainer<Recipe>> getFavouritesRecipes();
+
+    @POST("/recipes/fav/{id}")
+    Call<Recipe> addRecipeFav(@Path("id") String id);
+
+    @DELETE("/recipes/fav/{id}")
+    Call<Recipe> deleteRecipeFav(@Path("id") String id);
+
+
+
 }
