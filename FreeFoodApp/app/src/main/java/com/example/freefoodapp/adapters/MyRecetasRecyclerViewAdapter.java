@@ -79,7 +79,9 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             public void onClick(View v) {
                 recipeViewModel = ViewModelProviders.of((FragmentActivity) ctx).get(RecipeViewModel.class);
                 recipeViewModel.selectIdRecipe(holder.mItem.getId());
-                DeleteRecipeDialogFragment dialogFragment = Dele
+                DeleteRecipeDialogFragment dialogFragment = DeleteRecipeDialogFragment.newInstance();
+                dialogFragment.show(((FragmentActivity) ctx).getSupportFragmentManager(), "dialog");
+                
 
             }
         });
