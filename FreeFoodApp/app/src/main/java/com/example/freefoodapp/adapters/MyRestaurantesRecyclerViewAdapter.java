@@ -11,25 +11,20 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.freefoodapp.R;
-import com.example.freefoodapp.fragments.RestaurantesFragment.OnListFragmentInteractionListener;
-import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
+import com.example.freefoodapp.interfaces.OnListFragmentRestaurantListener;
 import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.ui.RestaurantDetailsActivity;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRestaurantesRecyclerViewAdapter.ViewHolder> {
 
     private final List<Restaurant> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnListFragmentRestaurantListener mListener;
     private Context ctx;
 
-    public MyRestaurantesRecyclerViewAdapter(Context ctx, int layout, List<Restaurant> items, OnListFragmentInteractionListener listener) {
+    public MyRestaurantesRecyclerViewAdapter(Context ctx, int layout, List<Restaurant> items, OnListFragmentRestaurantListener listener) {
         mValues = items;
         mListener = listener;
         this.ctx = ctx;
@@ -63,9 +58,7 @@ public class MyRestaurantesRecyclerViewAdapter extends RecyclerView.Adapter<MyRe
         holder.imagenRestauranteLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ctx, RestaurantDetailsActivity.class);
-                i.putExtra("id",mValues.get(position).getId());
-                ctx.startActivity(i);
+                mListener.OnClickRestaurant(holder.mItem);
 
 
             }

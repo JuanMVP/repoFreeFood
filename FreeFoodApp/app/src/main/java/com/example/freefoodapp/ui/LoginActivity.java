@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginSucces(Call<AuthAndRegisterResponse> call, Response<AuthAndRegisterResponse> response){
 
         Util.setData(LoginActivity.this, response.body().getToken(), response.body().getUser().getId(),
-                response.body().getUser().getEmail(), response.body().getUser().getName(),response.body().getUser().getPhotoUser().get(0));
+                response.body().getUser().getEmail(), response.body().getUser().getName(),response.body().getUser().getPhotoUser());
 
         startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
         finish();

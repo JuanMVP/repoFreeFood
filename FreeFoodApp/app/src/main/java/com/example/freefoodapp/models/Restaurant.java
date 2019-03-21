@@ -10,13 +10,13 @@ public class Restaurant {
     private String address;
     private List<Intolerance> intolerance;
     private String timetable;
-    private String loc[];
+    private String loc;
     private String picture;
     private String description;
 
     public Restaurant(){}
 
-    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String[] loc, String picture, String description) {
+    public Restaurant(String id, String name, String address, List<Intolerance> intolerance, String timetable, String loc, String picture, String description) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -67,11 +67,11 @@ public class Restaurant {
         this.timetable = timetable;
     }
 
-    public String[] getLoc() {
+    public String getLoc() {
         return loc;
     }
 
-    public void setLoc(String[] loc) {
+    public void setLoc(String loc) {
         this.loc = loc;
     }
 
@@ -91,7 +91,6 @@ public class Restaurant {
         this.description = description;
     }
 
-
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -100,7 +99,7 @@ public class Restaurant {
                 ", address='" + address + '\'' +
                 ", intolerance=" + intolerance +
                 ", timetable='" + timetable + '\'' +
-                ", loc=" + Arrays.toString(loc) +
+                ", loc='" + loc + '\'' +
                 ", picture='" + picture + '\'' +
                 ", description='" + description + '\'' +
                 '}';

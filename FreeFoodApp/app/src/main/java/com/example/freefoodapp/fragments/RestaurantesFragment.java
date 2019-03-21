@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.adapters.MyRestaurantesRecyclerViewAdapter;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
+import com.example.freefoodapp.interfaces.OnListFragmentRestaurantListener;
 import com.example.freefoodapp.models.ResponseContainer;
 import com.example.freefoodapp.models.Restaurant;
 import com.example.freefoodapp.responses.RestaurantResponse;
@@ -30,19 +31,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
+
 public class RestaurantesFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnListFragmentRestaurantListener mListener;
     private MyRestaurantesRecyclerViewAdapter adapter;
     private Context ctx;
     private RecyclerView recyclerView;
@@ -127,8 +123,8 @@ public class RestaurantesFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.ctx = context;
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnListFragmentRestaurantListener) {
+            mListener = (OnListFragmentRestaurantListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -142,8 +138,5 @@ public class RestaurantesFragment extends Fragment {
     }
 
 
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
-    }
+
 }
