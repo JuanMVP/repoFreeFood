@@ -76,7 +76,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/comensalesAddReceta"
+            app:layout_constraintTop_toBottomOf="@+id/comensalesEditReceta"
             app:srcCompat="@drawable/ic_catalogue" />
 
         <TextView
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/comensalesAddReceta"
+            app:layout_constraintTop_toBottomOf="@+id/comensalesEditReceta"
             tools:layout_editor_absoluteX="15dp" />
 
         <TextView
@@ -137,7 +137,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/comensalesAddReceta"
+            android:id="@+id/comensalesEditReceta"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

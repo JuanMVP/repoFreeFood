@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddRecipeActivity">
-
+    tools:context=".ui.EditRecipeActivity">
 
     <EditText
         android:id="@+id/nombreEditReceta"
@@ -60,7 +59,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="casual"
-        android:text="Añadir Nueva Receta"
+        android:text="Editar Receta"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descripcionEditReceta" />
 
     <Button
-        android:id="@+id/buttonAddReceta"
+        android:id="@+id/buttonEditReceta"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
@@ -113,40 +112,12 @@
         android:layout_marginBottom="8dp"
         android:background="@android:color/holo_blue_light"
         android:fontFamily="casual"
-        android:text="Crear Receta"
+        android:text="Editar Receta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagenAddReceta"
-        app:layout_constraintVertical_bias="0.177" />
-
-    <Button
-        android:id="@+id/btnAddFotoReceta"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
-        android:background="@android:color/holo_blue_light"
-        android:fontFamily="casual"
-        android:text="Añadir Foto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comensalesEditReceta" />
-
-    <ImageView
-        android:id="@+id/imagenAddReceta"
-        android:layout_width="100dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
-        app:layout_constraintStart_toEndOf="@+id/btnAddFotoReceta"
         app:layout_constraintTop_toBottomOf="@+id/comensalesEditReceta"
-        tools:srcCompat="@tools:sample/avatars[4]" />
+        app:layout_constraintVertical_bias="0.331" />
 
 </android.support.constraint.ConstraintLayout>

@@ -39,7 +39,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         token = UtilToken.getToken(RecipeDetailsActivity.this);
         nombreReceta = findViewById(R.id.nombreReceta);
         ingredientesReceta = findViewById(R.id.ingredientesRecetaDetalle);
-        comensalesReceta = findViewById(R.id.comensalesAddReceta);
+        comensalesReceta = findViewById(R.id.comensalesEditReceta);
         descripcionReceta = findViewById(R.id.descripcionReceta);
         imagenDetellaReceta = findViewById(R.id.imagenRecetaDetalle);
 

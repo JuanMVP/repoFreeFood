@@ -14,8 +14,10 @@ import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RecetasFragment.OnListFragmentInteractionListener;
 import com.example.freefoodapp.fragments.dummy.DummyContent.DummyItem;
 import com.example.freefoodapp.models.Recipe;
+import com.example.freefoodapp.ui.EditRecipeActivity;
 import com.example.freefoodapp.ui.RecipeDetailsActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -53,6 +55,15 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             }
         });
 
+        holder.btnEditReceta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ctx, EditRecipeActivity.class);
+                i.putExtra("recipe", (Serializable) mValues.get(position));
+                ctx.startActivity(i);
+            }
+        });
+
 
     }
 
@@ -64,7 +75,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView nombreReceta,ingredientesReceta;
-        public final ImageView imagenRecetaList, imagenFavReceta;
+        public final ImageView imagenRecetaList, imagenFavReceta, btnEditReceta;
         public Recipe mItem;
 
         public ViewHolder(View view) {
@@ -74,6 +85,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             ingredientesReceta =  view.findViewById(R.id.ingredientesRecetasList);
             imagenRecetaList = view.findViewById(R.id.recetasImagenList);
             imagenFavReceta = view.findViewById(R.id.recetasListFav);
+            btnEditReceta = view.findViewById(R.id.btnGoEditReceta);
         }
 
 

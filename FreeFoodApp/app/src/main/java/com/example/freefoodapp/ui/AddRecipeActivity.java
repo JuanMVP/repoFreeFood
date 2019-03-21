@@ -19,7 +19,6 @@ import com.example.freefoodapp.models.Recipe;
 import com.example.freefoodapp.models.TipoAutenticacion;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RecetaService;
-import com.example.freefoodapp.util.Util;
 import com.example.freefoodapp.util.UtilToken;
 
 import java.io.BufferedInputStream;
@@ -52,10 +51,10 @@ public class AddRecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
         token = UtilToken.getToken(AddRecipeActivity.this);
-        addName = findViewById(R.id.nombreAddReceta);
-        addIngredients = findViewById(R.id.ingredientesAddReceta);
-        addDescription = findViewById(R.id.descripcionAddReceta);
-        addDinnerGuest = findViewById(R.id.comensalesAddReceta);
+        addName = findViewById(R.id.nombreEditReceta);
+        addIngredients = findViewById(R.id.ingredientesEditReceta);
+        addDescription = findViewById(R.id.descripcionEditReceta);
+        addDinnerGuest = findViewById(R.id.comensalesEditReceta);
         addImagenReceta = findViewById(R.id.imagenAddReceta);
         btnCrear = findViewById(R.id.buttonAddReceta);
         btnFoto = findViewById(R.id.btnAddFotoReceta);

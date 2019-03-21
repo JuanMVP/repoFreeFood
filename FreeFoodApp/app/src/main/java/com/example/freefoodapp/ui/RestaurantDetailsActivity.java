@@ -42,7 +42,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         token = UtilToken.getToken(RestaurantDetailsActivity.this);
         nombreRestaurante = findViewById(R.id.nombreReceta);
         direccionRestaurante = findViewById(R.id.ingredientesRecetaDetalle);
-        horarioRestaurante = findViewById(R.id.comensalesAddReceta);
+        horarioRestaurante = findViewById(R.id.comensalesEditReceta);
         intoleranciasRestaurantes = findViewById(R.id.intoleranciasDetailsRestaurant);
         imagenDetalleRest = findViewById(R.id.imagenDetalle);
         restauranteDescripcion = findViewById(R.id.descripcionRestaurante);
