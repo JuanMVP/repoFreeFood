@@ -13,7 +13,7 @@ export const SessionRoutes: Routes = [
     children: [
       //{ path: '', redirectTo: '/session/login' },
       {
-        path: '',
+        path: 'signin',
         component: SigninComponent
       }
     ]

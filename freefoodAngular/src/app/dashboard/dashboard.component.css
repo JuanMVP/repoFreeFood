@@ -2,34 +2,32 @@
   height: 50px;
 }
 .example-card {
-    z-index: 200px;
-    max-width: 290px;
-    height: 300px;
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-  }
-  .example-header-image {
-    background-size: cover;
-  }
-  .centerIcons {
-    text-align: right;
-    margin-top: 4px;
-  }
-  
-  ::ng-deep .mat-card-title {
-    font-family: 'Century Gothic', 'Times New Roman', Tahoma, sans-serif;
-    font-weight: bold;
-  }
-  .bold {
-    font-weight: bold;
-  }
-  .category {
-    font-weight: bold;
-    color: blue;
-  }
-  .font {
-    font-family: 'Century Gothic', 'Times New Roman', Tahoma, sans-serif;
-  }
-  
+  z-index: 200px;
+  max-width: 290px;
+  height: 400px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.example-header-image {
+  background-size: cover;
+}
+.centerIcons {
+  text-align: right;
+  margin-top: 4px;
+}
+
+::ng-deep .mat-card-title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+.bold {
+  font-weight: bold;
+}
+.category {
+  font-weight: bold;
+  color: blue;
+}
+.font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -16,23 +16,12 @@
             android:id="@+id/nav_recetas"
             android:icon="@drawable/ic_recipe_book"
             android:title="Recetas" />
-        <item
+        <!--<item
             android:id="@+id/nav_recetas_favoritas"
             android:icon="@drawable/ic_wishlist"
-            android:title="Mis Recetas Favoritas" />
+            android:title="Mis Recetas Favoritas" />-->
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+
 
 </menu>

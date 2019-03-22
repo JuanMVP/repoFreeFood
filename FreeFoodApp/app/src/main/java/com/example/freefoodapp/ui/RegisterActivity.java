@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRegisterSuccess(Call<AuthAndRegisterResponse> call, Response<AuthAndRegisterResponse> response){
         Util.setData(RegisterActivity.this,response.body().getToken(),response.body().getUser().getId(),
-                response.body().getUser().getEmail(),response.body().getUser().getName(),response.body().getUser().getPhotoUser());
+                response.body().getUser().getEmail(),response.body().getUser().getName(),response.body().getUser().getPhotoUser().get(0));
 
         startActivity(new Intent(RegisterActivity.this,DashboardActivity.class));
     }

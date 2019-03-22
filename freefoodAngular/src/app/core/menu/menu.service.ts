@@ -23,29 +23,24 @@ export interface Menu {
 const MENUITEMS = [
   {
     state: 'home',
-    name: 'HOME',
+    name: 'Recetas',
     type: 'link',
-    icon: 'home'
+    icon: 'restaurant'
   },
   {
     state: 'usuarios',
     name: 'Usuarios',
-    type: 'extTabLink',
+    type: 'link',
     icon: 'person'
   },
   {
     state: 'restaurantes',
     name: 'Restaurantes',
-    type: 'extTabLink',
+    type: 'link',
     icon: 'restaurant'
 
   },
-  {
-    state: '/session/signin',
-    name: 'Logout',
-    type: 'link',
-    icon: 'power_settings_new'
-  }
+  
 ];
 
 @Injectable()

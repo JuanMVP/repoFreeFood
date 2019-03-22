@@ -9,12 +9,12 @@ public class User {
     private String password;
     private String name;
     private String role;
-    private String photoUser;
+    private List<String> photoUser;
 
 
     public User () {};
 
-    public User(String id, String email, String password, String name, String role, String photoUser) {
+    public User(String id, String email, String password, String name, String role, List<String> photoUser) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -22,6 +22,7 @@ public class User {
         this.role = role;
         this.photoUser = photoUser;
     }
+
 
     public String getId() {
         return id;
@@ -63,13 +64,14 @@ public class User {
         this.role = role;
     }
 
-    public String getPhotoUser() {
+    public List<String> getPhotoUser() {
         return photoUser;
     }
 
-    public void setPhotoUser(String photoUser) {
+    public void setPhotoUser(List<String> photoUser) {
         this.photoUser = photoUser;
     }
+
 
     @Override
     public String toString() {
@@ -79,7 +81,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", role='" + role + '\'' +
-                ", photoUser='" + photoUser + '\'' +
+                ", photoUser=" + photoUser +
                 '}';
     }
 }

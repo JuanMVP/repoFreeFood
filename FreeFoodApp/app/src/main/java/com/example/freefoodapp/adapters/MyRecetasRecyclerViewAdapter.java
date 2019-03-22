@@ -132,85 +132,71 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             }
         });
 
-        holder.imagenFavReceta.setOnClickListener(new View.OnClickListener() {
+        /*holder.imagenFavReceta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(UtilToken.getToken(ctx) == null){
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                    builder.setTitle("Atención").setMessage("Para añadir a favoritos debe de estar logueado");
-                    builder.setPositiveButton("ir al login", new DialogInterface.OnClickListener() {
+
+                if (favCode == 7) {
+                    RecetaService service = ServiceGenerator.createService(RecetaService.class, UtilToken.getToken(ctx), TipoAutenticacion.JWT);
+
+                    Call<Recipe> call = service.addRecipeFav(holder.mItem.getId());
+                    call.enqueue(new Callback<Recipe>() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ctx.startActivity(new Intent(ctx, LoginActivity.class));
+                        public void onResponse(Call<Recipe> call, Response<Recipe> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(ctx, "Erro en la peticion", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(ctx, "Añadido a favoritos", Toast.LENGTH_LONG).show();
+                                holder.mItem.setFav(true);
+                                holder.imagenFavReceta.setImageResource(R.drawable.ic_heart);
+                                //     refreshList(holder);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Recipe> call, Throwable t) {
+                            Toast.makeText(ctx, "Error de conexion", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                } else {
+                    RecetaService service = ServiceGenerator.createService(RecetaService.class, UtilToken.getToken(ctx), TipoAutenticacion.JWT);
+
+                    Call<Recipe> call = service.deleteRecipeFav(holder.mItem.getId());
+                    call.enqueue(new Callback<Recipe>() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d("Volver", "Volver a atrás");
-                        }
-                    });
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
-
-                }else{
-
-                    if (favCode == 7) {
-                        RecetaService service = ServiceGenerator.createService(RecetaService.class, UtilToken.getToken(ctx), TipoAutenticacion.JWT);
-
-                        Call<Recipe> call = service.addRecipeFav(holder.mItem.getId());
-                        call.enqueue(new Callback<Recipe>() {
-                            @Override
-                            public void onResponse(Call<Recipe> call, Response<Recipe> response) {
-                                if (!response.isSuccessful()) {
-                                    Toast.makeText(ctx, "Erro en la peticion", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(ctx, "Añadido a favoritos", Toast.LENGTH_LONG).show();
-                                    holder.mItem.setFav(true);
-                                    holder.imagenFavReceta.setImageResource(R.drawable.ic_heart);
-                                    //     refreshList(holder);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Recipe> call, Throwable t) {
-                                Toast.makeText(ctx, "Error de conexion", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    } else {
-                        RecetaService service = ServiceGenerator.createService(RecetaService.class, UtilToken.getToken(ctx), TipoAutenticacion.JWT);
-
-                        Call<Recipe> call = service.deleteRecipeFav(holder.mItem.getId());
-                        call.enqueue(new Callback<Recipe>() {
-                            @Override
-                            public void onResponse(Call<Recipe> call, Response<Recipe> response) {
-                                if (!response.isSuccessful()) {
+                        public void onResponse(Call<Recipe> call, Response<Recipe> response) {
+                            if (!response.isSuccessful()) {
 //                            Toast.makeText(contexto, "Error in request", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(ctx, "Deleted from favourites", Toast.LENGTH_LONG).show();
-                                    holder.mItem.setFav(false);
-                                    holder.imagenFavReceta.setImageResource(R.drawable.ic_corazon);
-                                    //    refreshList(holder);
-                                }
+                            } else {
+                                Toast.makeText(ctx, "Deleted from favourites", Toast.LENGTH_LONG).show();
+                                holder.mItem.setFav(false);
+                                holder.imagenFavReceta.setImageResource(R.drawable.ic_corazon);
+                                //    refreshList(holder);
                             }
+                        }
 
-                            @Override
-                            public void onFailure(Call<Recipe> call, Throwable t) {
-                                Toast.makeText(ctx, "Error de conexion", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onFailure(Call<Recipe> call, Throwable t) {
+                            Toast.makeText(ctx, "Error de conexion", Toast.LENGTH_SHORT).show();
 
-                            }
-                        });
-                    }
+                        }
+                    });
+                }
+
+
+
+
+
+
+
 
 
 
 
                 }
-            }
-        });
+
+        });*/
 
 
     }
@@ -223,7 +209,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView nombreReceta,ingredientesReceta;
-        public final ImageView imagenRecetaList, imagenFavReceta, btnEditReceta,btnDeleteReceta;
+        public final ImageView imagenRecetaList, btnEditReceta,btnDeleteReceta;
         public Recipe mItem;
 
         public ViewHolder(View view) {
@@ -232,7 +218,7 @@ public class MyRecetasRecyclerViewAdapter extends RecyclerView.Adapter<MyRecetas
             nombreReceta =  view.findViewById(R.id.nombreRecetaList);
             ingredientesReceta =  view.findViewById(R.id.ingredientesRecetasList);
             imagenRecetaList = view.findViewById(R.id.recetasImagenList);
-            imagenFavReceta = view.findViewById(R.id.recetasListFav);
+            //imagenFavReceta = view.findViewById(R.id.recetasListFav);
             btnEditReceta = view.findViewById(R.id.btnGoEditReceta);
             btnDeleteReceta = view.findViewById(R.id.btnGoDeleteRecipe);
         }

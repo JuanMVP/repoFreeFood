@@ -46,6 +46,7 @@ public class RecetasFavoritasFragment extends Fragment {
     private Context ctx;
     private List<Recipe> listaRecetas;
     private MyRecetasRecyclerViewAdapter adapter;
+    private String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOGI2NmZlMDc5ZmIzMjBlYTExYTQ5NiIsImlhdCI6MTU1MzIyNzgyMX0.N1uvotyd2yW3j-M1-aNoVHOPrI83-X9DTTobdLc1Vt4";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -90,7 +91,7 @@ public class RecetasFavoritasFragment extends Fragment {
 
             listaRecetas = new ArrayList<>();
 
-            RecetaService service = ServiceGenerator.createService(RecetaService.class, UtilToken.getToken(ctx), TipoAutenticacion.JWT);
+            RecetaService service = ServiceGenerator.createService(RecetaService.class, token , TipoAutenticacion.JWT);
             Call<ResponseContainer<Recipe>> callFavProperty = service.getFavouritesRecipes();
 
             callFavProperty.enqueue(new Callback<ResponseContainer<Recipe>>() {

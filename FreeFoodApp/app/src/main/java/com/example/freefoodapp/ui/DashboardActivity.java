@@ -16,24 +16,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.freefoodapp.R;
 import com.example.freefoodapp.fragments.RecetasFavoritasFragment;
 import com.example.freefoodapp.fragments.RecetasFragment;
 import com.example.freefoodapp.fragments.RestaurantesFragment;
 import com.example.freefoodapp.fragments.dummy.DummyContent;
-import com.example.freefoodapp.interfaces.OnListFragmentRestaurantListener;
-import com.example.freefoodapp.models.Restaurant;
-import com.example.freefoodapp.util.Util;
-
-import java.io.Serializable;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnListFragmentRestaurantListener, RecetasFragment.OnListFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RestaurantesFragment.OnListFragmentInteractionListener, RecetasFragment.OnListFragmentInteractionListener {
 
      FloatingActionButton fab;
 
@@ -63,19 +54,6 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //color para iconos
         navigationView.setItemIconTintList(null);
-
-
-
-
-        View headerView = navigationView.getHeaderView(0);
-
-        ImageView iv = headerView.findViewById(R.id.picture);
-        TextView name = headerView.findViewById(R.id.userName);
-        TextView email = headerView.findViewById(R.id.emailUser);
-
-        name.setText(Util.getNombreUser(DashboardActivity.this) + Util.getNombreUser(DashboardActivity.this));
-        email.setText(Util.getEmailUser(DashboardActivity.this));
-        Glide.with(this).load(Util.getPhotoUser(DashboardActivity.this)).apply(RequestOptions.circleCropTransform()).into(iv);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RestaurantesFragment()).commit();
         fab.hide();
@@ -138,15 +116,11 @@ public class DashboardActivity extends AppCompatActivity
             });
 
 
-        } else if (id == R.id.nav_recetas_favoritas) {
+        } /*else if (id == R.id.nav_recetas_favoritas) {
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new RecetasFavoritasFragment()).commit();
             fab.hide();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+        } */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -155,24 +129,6 @@ public class DashboardActivity extends AppCompatActivity
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
-
-    @Override
-    public void OnClickRestaurant(Restaurant restaurant) {
-        Intent details = new Intent(DashboardActivity.this,RestaurantDetailsActivity.class);
-        details.putExtra("restaurant_id",restaurant.getId());
-        details.putExtra("restaurant_name",restaurant.getName());
-        details.putExtra("restaurant_address",restaurant.getAddress());
-        details.putExtra("restaurant_intolerance", (Serializable) restaurant.getIntolerance());
-        details.putExtra("restaurant_timetable",restaurant.getTimetable());
-        details.putExtra("restaurant_loc",restaurant.getLoc());
-        details.putExtra("restaurant_description",restaurant.getDescription());
-        startActivity(details);
-
-
-
-
 
     }
 }

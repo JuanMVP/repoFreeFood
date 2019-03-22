@@ -1,10 +1,12 @@
 package com.example.freefoodapp.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import com.example.freefoodapp.models.ResponseContainer;
 import com.example.freefoodapp.models.TipoAutenticacion;
 import com.example.freefoodapp.retrofit.generator.ServiceGenerator;
 import com.example.freefoodapp.retrofit.services.RecetaService;
+import com.example.freefoodapp.ui.DashboardActivity;
 import com.example.freefoodapp.util.UtilToken;
 import com.example.freefoodapp.viewmodel.RecipeViewModel;
 
@@ -26,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DeleteRecipeDialogFragment extends DialogFragment {
+    Activity activity;
 
     public static DeleteRecipeDialogFragment newInstance() {
         return new DeleteRecipeDialogFragment();
@@ -72,6 +76,7 @@ public class DeleteRecipeDialogFragment extends DialogFragment {
                     RecipeViewModel mViewModel = ViewModelProviders.of((FragmentActivity) ctx).get(RecipeViewModel.class);
                     String idRecipe = mViewModel.getSelectedIdInmuble().getValue();
                     getRecipes(idRecipe, ctx);
+
 
 
                 }else{
